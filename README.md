@@ -11,7 +11,7 @@ Clone the repository to your home directory:
 
 Next install the Vim plugins:
 
-    cd dotvimfiles
+    cd vim-files
     git submodule init
     git submodule update
 Finally create a symlink to the .vimrc file in your home directory:
