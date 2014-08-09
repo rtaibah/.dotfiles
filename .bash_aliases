@@ -9,9 +9,16 @@
 alias c='clear'
 alias g='grep'
 alias xx="exit"
-
+# Search history
+alias h="history | grep"
+# Search processes
+alias p='ps aux |grep '
+#open any file or folder with default app
+alias o='xdg-open '
 # Readable path
 alias path='echo -e ${PATH//:/\\n}'
+#python calculator
+alias pc='python -i -Qnew -c "from math import *"'
 
 ###############################################################################
 # Listing
@@ -67,7 +74,7 @@ alias gba='git branch -a -v -v'
 alias gun='git reset HEAD' # Unstage added changes
 
 ###############################################################################
-# Apt-get 
+# Apt
 ###############################################################################
 #
 
@@ -85,3 +92,4 @@ alias apt-autoremove='sudo apt-get autoremove'
 #Other
 alias 'make_me_a_sandwich'='echo "What? Make it yourself"'
 alias 'sudo_make_me_a_sandwich'='echo "ok"'
+alias emacs='echo "emacs sucks " && sleep 2 && vim'
