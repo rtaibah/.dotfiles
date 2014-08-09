@@ -1,4 +1,3 @@
-!/usr/bin/env bash
 ###############################################################################
 # bash_aliases.sh
 # Useful bash aliases
@@ -66,3 +65,23 @@ alias gf='git fetch'
 alias gb='git branch'
 alias gba='git branch -a -v -v'
 alias gun='git reset HEAD' # Unstage added changes
+
+###############################################################################
+# Apt-get 
+###############################################################################
+#
+
+alias apt-update='sudo apt-get update' 
+alias apt-upgrade='sudo apt-get upgrade' 
+alias apt-install='sudo apt-get install' 
+alias apt-remove='sudo apt-get remove' 
+alias apt-purge='sudo apt-get purge' 
+alias apt-search='apt-cache search' 
+alias apt-show='apt-cache show' 
+alias apt-autoclean='sudo apt-get autoclean' 
+alias apt-autoremove='sudo apt-get autoremove' 
+
+
+#Other
+alias 'make_me_a_sandwich'='echo "What? Make it yourself"'
+alias 'sudo_make_me_a_sandwich'='echo "ok"'
