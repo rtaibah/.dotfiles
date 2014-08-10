@@ -19,6 +19,20 @@ alias o='xdg-open '
 alias path='echo -e ${PATH//:/\\n}'
 #python calculator
 alias pc='python -i -Qnew -c "from math import *"'
+# ping
+alias ping="ping -c 3"
+# sudo
+alias !="sudo"
+
+# Change Screen resolutionso
+# TODO: These resolutions are from my rMBP, find a way to extract actual resolutions from the xrandr command
+
+alias res1='xrandr -s 2880x1800'
+alias res2='xrandr -s 1920x1200'
+alias res3='xrandr -s 1920x1200'
+alias res4='xrandr -s 1600x1200'
+alias res5='xrandr -s 1680x1050'
+alias res6='xrandr -s 1400x1050'
 
 ###############################################################################
 # Listing

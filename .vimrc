@@ -12,18 +12,17 @@
 set nocompatible
 
 " @Theme
-
-if has('gui_running')
+" if has('gui_running')
 	" Desert is a nice color scheme but I should really explore my options.
-	 colorscheme desert
+"	 colorscheme desert
 	
 	" Override the columns and lines in the .gvimrc file if need be for each different computer based on its screen resolution.
-	 set columns=170 lines=60
-	 set guioptions=ac
- else
+"	 set columns=170 lines=60
+"	 set guioptions=ac
+" else
 	 " Need to pick a decent color scheme for the Terminal that works across most of them.
-	 colorscheme default
- endif
+"	 colorscheme default
+" endif
 
 " Highlight matching bracket.
 set showmatch
