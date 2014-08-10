@@ -85,7 +85,7 @@ alias gpld='git pull origin develop'
 alias gf='git fetch'
 alias gb='git branch'
 alias gba='git branch -a -v -v'
-alias gun='git reset HEAD' # Unstage added changes
+alias gun='git reset --hard HEAD' # Unstage added changes
 
 ###############################################################################
 # Apt
