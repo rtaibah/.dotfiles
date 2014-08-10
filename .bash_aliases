@@ -103,6 +103,16 @@ alias apt-autoclean='sudo apt-get autoclean'
 alias apt-autoremove='sudo apt-get autoremove' 
 
 
+###############################################################################
+# Vagrant
+###############################################################################
+
+alias vup='vagrant up' 
+alias vh='vagrant halt' 
+alias vp='vagrant provision' 
+alias vd='vagrant destroy' 
+alias vs='vagrant ssh' 
+
 #Other
 alias 'make_me_a_sandwich'='echo "What? Make it yourself"'
 alias 'sudo_make_me_a_sandwich'='echo "ok"'
