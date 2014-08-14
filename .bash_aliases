@@ -24,6 +24,9 @@ alias ping="ping -c 3"
 # sudo
 alias !="sudo"
 
+# Display IP Address for Vagrant VM.
+alias i='ifconfig eth1 | grep "inet addr" | cut -d: -f2 | awk "{print \$1}"' 
+
 # Change Screen resolutionso
 # TODO: These resolutions are from my rMBP, find a way to extract actual resolutions from the xrandr command
 
