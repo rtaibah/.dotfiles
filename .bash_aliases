@@ -23,6 +23,11 @@ alias pc='python -i -Qnew -c "from math import *"'
 alias ping="ping -c 3"
 # sudo
 alias !="sudo"
+# mount apple partition
+alias apple="sudo mount -t hfsplus -o force,rw /dev/sda2 /media/rtaibah/apple/"
+# unmount apple partition
+alias uapple="sudo umount /media/rtaibah/apple"
+
 
 # Display IP Address for Vagrant VM.
 alias i='ifconfig eth1 | grep "inet addr" | cut -d: -f2 | awk "{print \$1}"' 
