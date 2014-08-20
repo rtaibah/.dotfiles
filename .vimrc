@@ -27,6 +27,9 @@ set nocompatible
 " Highlight matching bracket.
 set showmatch
 
+" Add line numbers
+:set number
+
 " When there is a previous search pattern, highlight all its matches.
 set hlsearch
 
