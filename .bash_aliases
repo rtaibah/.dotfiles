@@ -125,3 +125,12 @@ alias vs='vagrant ssh'
 alias 'make_me_a_sandwich'='echo "What? Make it yourself"'
 alias 'sudo_make_me_a_sandwich'='echo "ok"'
 alias emacs='echo "emacs sucks " && sleep 2 && vim'
+
+###############################################################################
+# Music
+###############################################################################
+
+alias defcon='mplayer http://uwstream3.somafm.com:6200'
+alias groove='mplayer http://uwstream3.somafm.com:8032'
+alias lush='mplayer http://uwstream2.somafm.com:8800' 
+alias space='mplayer http://xstream1.somafm.com:8000' 
