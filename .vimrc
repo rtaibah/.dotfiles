@@ -81,3 +81,12 @@ map <C-n> :NERDTreeToggle<CR>
 execute pathogen#infect()
 syntax on
 filetype plugin indent on
+
+
+" @Window Movement and Management
+
+" Quicker window movement
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
