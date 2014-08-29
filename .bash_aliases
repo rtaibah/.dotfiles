@@ -27,6 +27,9 @@ alias !="sudo"
 alias apple="sudo mount -t hfsplus -o force,rw /dev/sda2 /media/rtaibah/apple/"
 # unmount apple partition
 alias uapple="sudo umount /media/rtaibah/apple"
+# todo.txt alias
+alias t="~/tools/todo.txt-cli/todo.sh"
+
 
 
 # Display IP Address for Vagrant VM.
