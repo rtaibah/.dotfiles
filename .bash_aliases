@@ -27,6 +27,9 @@ alias !="sudo"
 alias apple="sudo mount -t hfsplus -o force,rw /dev/sda2 /media/rtaibah/apple/"
 # unmount apple partition
 alias uapple="sudo umount /media/rtaibah/apple"
+# todo.txt alias
+alias t="~/tools/todo.txt-cli/todo.sh"
+
 
 
 # Display IP Address for Vagrant VM.
@@ -135,3 +138,4 @@ alias groove='mplayer http://uwstream3.somafm.com:8032'
 alias lush='mplayer http://uwstream2.somafm.com:8800' 
 alias space='mplayer http://xstream1.somafm.com:8000' 
 alias indie='mplayer http://xstream1.somafm.com:8090' 
+alias cover='mplayer http://uwstream3.somafm.com:8700'
