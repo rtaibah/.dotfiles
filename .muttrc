@@ -1,0 +1,170 @@
+## Source the results of the decryption of passwords first
+source "gpg2 -dq $HOME/.my-pwds.gpg |"
+
+# Account settings
+set folder      = imaps://imap.gmail.com/
+set imap_user   = taibah@gmail.com
+set imap_pass=$my_pw_personal
+## set imap_pass=$my_pw_work
+set spoolfile   = +INBOX
+mailboxes       = +INBOX
+
+# Store message headers locally to speed things up.
+# # If hcache is a folder, Mutt will create sub cache folders for each account which may speeds things even more up.
+ set header_cache = ~/.cache/mutt
+#
+# # Store messages locally to speed things up, like searching message bodies.
+# # Can be the same folder as header_cache.
+# # This will cost important disk usage according to your e-mail amount.
+ set message_cachedir = "~/.cache/mutt"
+#
+# # Specify where to save and/or look for postponed messages.
+ set postponed = +[Gmail]/Drafts
+#
+# # Allow Mutt to open new imap connection automatically.
+ unset imap_passive
+#
+# # Keep IMAP connection alive by polling intermittently (time in seconds).
+ set imap_keepalive = 300
+
+# # How often to check for new mail (time in seconds).
+ set mail_check = 120
+
+## Set up SMTP for sending out mail
+set smtp_url=smtps://$imap_user:$imap_pass@smtp.gmail.com
+
+
+
+ # character set on messages that we send
+set send_charset="utf-8"
+ # # if there is no character set given on incoming messages, it is probably windows
+set assumed_charset="iso-8859-1"
+    
+#   # make sure Vim knows mutt is a mail client and that we compose an UTF-8 encoded message
+set editor="vim -c 'set syntax=mail ft=mail enc=utf-8'"
+#     
+## just scroll one line instead of full page
+set menu_scroll=yes
+#  
+#  # we want to see some MIME types inline, see below this code listing for explanation
+auto_view application/msword
+auto_view application/pdf
+#    
+## make default search pattern to search in To, Cc and Subject
+set simple_search="~f %s | ~C %s | ~s %s"
+#  
+## threading preferences, sort by threads
+set sort=threads
+set strict_threads=yes
+#    
+## show spam score (from SpamAssassin only) when reading a message
+## spam "X-Spam-Score: ([0-9\\.]+).*" "SA: %1"
+set pager_format = " %C - %[%H:%M] %.20v, %s%* %?H? [%H] ?"
+#      
+## do not show all headers, just a few
+ignore          *
+unignore        From To Cc Bcc Date Subject
+## and in this order
+unhdr_order     *
+hdr_order       From: To: Cc: Bcc: Date: Subject:
+        
+## Different tmp folder
+set tmpdir="~/.tmp"
+
+# Palette for use with the Linux console.  Black background.
+
+color hdrdefault blue black
+color quoted blue black
+color signature blue black
+color attachment red black
+color message brightred black
+color error brightred black
+color indicator black yellow
+color status brightgreen blue
+color tree white black
+color normal white black
+color markers red black
+color search white black
+color tilde brightmagenta black
+color index blue black ~F
+color index red black "~N|~O"
+
+color body brightwhite black '\*+[^*]+\*+'
+color body brightwhite black '_+[^_]+_+'
+
+# Color definitions when on a mono screen
+mono bold      bold
+mono underline underline
+mono indicator reverse
+mono error     bold
+
+# Colors for items in the reader
+color header brightyellow default "^(From|Subject):"
+color header brightcyan   default ^To:
+color header brightcyan   default ^Cc:
+mono  header bold                 "^(From|Subject):"
+
+# Many of these formulas were stolen from Jeremy Blosser
+# These would be much simpler if colors were additive.
+
+# regular new messages
+color index black         white   "~N !~T !~F !~p !~P"
+# regular tagged messages
+color index black         cyan    "~T !~F !~p !~P"
+# regular flagged messages
+color index black         red     "~F !~p !~P"
+# messages to me
+color index yellow        default "~p !~N !~T !~F !~P"
+color index brightyellow  white   "~p ~N !~T !~F !~P"
+color index yellow        cyan    "~p ~T !~F !~P"
+color index yellow        red     "~p ~F !~P"
+# messages from me
+color index green         default "~P !~N !~T !~F"
+color index green         white   "~P ~N !~T !~F"
+color index green         cyan    "~P ~T !~F"
+color index green         red     "~P ~F"
+# big messages
+color index brightred     default "!~N ~z 102400-"
+color index brightred     cyan    "~T !~F !~p !~P ~z 102400-"
+color index brightred     white   "~N ~z 102400-"
+## deleted messages
+color index red           default "!~N ~D"
+color index red           white   "~N ~D"
+
+
+## Highlights inside the body of a message.
+
+## Attribution lines
+color body magenta default "\\* [^<]+ <[^>]+> \\[[^]]+\\]:"
+color body magenta default "(^|[^[:alnum:]])on [a-z0-9 ,]+( at [a-z0-9:,. +-]+)? wrote:"
+
+## URLs
+color body brightyellow default "([a-z][a-z0-9+-]*://(((([a-z0-9_.!~*'();:&=+$,-]|%[0-9a-f][0-9a-f])*@)?((([a-z0-9]([a-z0-9-]*[a-z0-9])?)\\.)*([a-z]([a-z0-9-]*[a-z0-9])?)\\.?|[0-9]+\\.[0-9]+\\.[0-9]+\\.[0-9]+)(:[0-9]+)?)|([a-z0-9_.!~*'()$,;:@&=+-]|%[0-9a-f][0-9a-f])+)(/([a-z0-9_.!~*'():@&=+$,-]|%[0-9a-f][0-9a-f])*(;([a-z0-9_.!~*'():@&=+$,-]|%[0-9a-f][0-9a-f])*)*(/([a-z0-9_.!~*'():@&=+$,-]|%[0-9a-f][0-9a-f])*(;([a-z0-9_.!~*'():@&=+$,-]|%[0-9a-f][0-9a-f])*)*)*)?(\\?([a-z0-9_.!~*'();/?:@&=+$,-]|%[0-9a-f][0-9a-f])*)?(#([a-z0-9_.!~*'();/?:@&=+$,-]|%[0-9a-f][0-9a-f])*)?|(www|ftp)\\.(([a-z0-9]([a-z0-9-]*[a-z0-9])?)\\.)*([a-z]([a-z0-9-]*[a-z0-9])?)\\.?(:[0-9]+)?(/([-a-z0-9_.!~*'():@&=+$,]|%[0-9a-f][0-9a-f])*(;([-a-z0-9_.!~*'():@&=+$,]|%[0-9a-f][0-9a-f])*)*(/([-a-z0-9_.!~*'():@&=+$,]|%[0-9a-f][0-9a-f])*(;([-a-z0-9_.!~*'():@&=+$,]|%[0-9a-f][0-9a-f])*)*)*)?(\\?([-a-z0-9_.!~*'();/?:@&=+$,]|%[0-9a-f][0-9a-f])*)?(#([-a-z0-9_.!~*'();/?:@&=+$,]|%[0-9a-f][0-9a-f])*)?)[^].,:;!)? \t\r\n<>\"]"
+
+# email addresses
+color body brightmagenta default "((@(([0-9a-z-]+\\.)*[0-9a-z-]+\\.?|#[0-9]+|\\[[0-9]?[0-9]?[0-9]\\.[0-9]?[0-9]?[0-9]\\.[0-9]?[0-9]?[0-9]\\.[0-9]?[0-9]?[0-9]\\]),)*@(([0-9a-z-]+\\.)*[0-9a-z-]+\\.?|#[0-9]+|\\[[0-9]?[0-9]?[0-9]\\.[0-9]?[0-9]?[0-9]\\.[0-9]?[0-9]?[0-9]\\.[0-9]?[0-9]?[0-9]\\]):)?[0-9a-z_.+%$-]+@(([0-9a-z-]+\\.)*[0-9a-z-]+\\.?|#[0-9]+|\\[[0-2]?[0-9]?[0-9]\\.[0-2]?[0-9]?[0-9]\\.[0-2]?[0-9]?[0-9]\\.[0-2]?[0-9]?[0-9]\\])"
+
+# PGP messages
+color  body            brightyellow    default "^gpg: Good signature .*"
+color  body            white           default "^gpg: "
+color  body            brightwhite     red     "^gpg: BAD signature from.*"
+mono   body            bold                    "^gpg: Good signature"
+mono   body            bold                    "^gpg: BAD signature from.*"
+
+# Various smilies and the like
+color body brightwhite default "<[Gg]>"                            # <g>
+color body brightwhite default "<[Bb][Gg]>"                        # <bg>
+color body brightwhite default " [;:]-*[})>{(<|]"                  # :-) etc...
+# *bold*
+color body brightblue  default "(^|[[:space:][:punct:]])\\*[^*]+\\*([[:space:][:punct:]]|$)"
+mono  body bold                "(^|[[:space:][:punct:]])\\*[^*]+\\*([[:space:][:punct:]]|$)"
+# _underline_
+color body brightblue  default "(^|[[:space:][:punct:]])_[^_]+_([[:space:][:punct:]]|$)"
+mono  body underline           "(^|[[:space:][:punct:]])_[^_]+_([[:space:][:punct:]]|$)"
+# /italic/  (Sometimes gets directory names)
+#color body brightblue  default "(^|[[:space:][:punct:]])/[^/]+/([[:space:][:punct:]]|$)"
+#mono  body underline           "(^|[[:space:][:punct:]])/[^/]+/([[:space:][:punct:]]|$)"
+
+# Border lines.
+color body blue default "( *[-+=#*~_]){6,}"
+
