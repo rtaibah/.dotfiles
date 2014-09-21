@@ -91,11 +91,8 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 
-<<<<<<< HEAD
 " Set columns to 72 in Mutt
 au BufRead /tmp/mutt-* set tw=72
 
-=======
 " Store swap files in fixed location, not current directory.
 set dir=~/.vimswap//,/var/tmp//,/tmp//,.
->>>>>>> 02a44f8e7318c1aabf95a9e6cdacff512b402885
