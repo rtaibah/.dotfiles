@@ -3,7 +3,6 @@
   tab_position = hidden
   inactive_color_offset = 0.68
   borderless = True
-  Exec=/usr/bin/bicon.bin
 [keybindings]
 [profiles]
   [[default]]
