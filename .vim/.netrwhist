@@ -1,0 +1,7 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_1='/vagrant/rtaibah-blog-2/about'
+let g:netrw_dirhist_2='/home/vagrant/projects/rtaibah-blog/about'
+let g:netrw_dirhist_3='/home/vagrant/projects/rtaibah-blog/.git'
+let g:netrw_dirhist_4='/home/vagrant/projects/rtaibah-so-simple-blog/_posts/blog'
+let g:netrw_dirhist_5='/home/vagrant/projects/rtaibah-blog/_posts'

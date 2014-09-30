@@ -79,6 +79,7 @@ map <C-n> :NERDTreeToggle<CR>
 
 " Pathogen load
 execute pathogen#infect()
+
 syntax on
 filetype plugin indent on
 
