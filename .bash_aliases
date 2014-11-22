@@ -140,3 +140,10 @@ alias lush='mplayer http://uwstream2.somafm.com:8800'
 alias space='mplayer http://xstream1.somafm.com:8000' 
 alias indie='mplayer http://xstream1.somafm.com:8090' 
 alias cover='mplayer http://uwstream3.somafm.com:8700'
+
+###############################################################################
+# Servers 
+###############################################################################
+
+alias do1="ssh root@107.170.92.118"
+
