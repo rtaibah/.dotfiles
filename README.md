@@ -12,7 +12,7 @@ Clone the repository to your home directory:
 
 Next install the Vim plugins:
 
-    cd vim-files
+    cd .dotfiles 
     git submodule init
     git submodule update
 
