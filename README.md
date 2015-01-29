@@ -18,11 +18,11 @@ Next install the Vim plugins:
 
 Finally create a symlink to the .vimrc file in your home directory:
 
-    ln -s ~/dotfiles/.vimrc ~/.vimrc
-    ln -s ~/dotfiles/.vim ~/.vim
+    ln -s ~/.dotfiles/.vimrc ~/.vimrc
+    ln -s ~/.dotfiles/.vim ~/.vim
 
 # BASH ALIASES
-    ln -s ~/dotfiles/.bash_aliases ~/.bash_aliases
+    ln -s ~/.dotfiles/.bash_aliases ~/.bash_aliases
 
 
 
