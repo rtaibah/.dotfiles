@@ -7,3 +7,6 @@
 [submodule ".vim/bundle/vim-markdown"]
 	path = .vim/bundle/vim-markdown
     url = git://github.com/plasticboy/vim-markdown.git
+[submodule "git-aware-prompt"]
+	path = git-aware-prompt
+	url = git@github.com:rtaibah/git-aware-prompt.git
