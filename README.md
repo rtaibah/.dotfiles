@@ -21,8 +21,8 @@ Finally create a symlink to the .vimrc file in your home directory:
     ln -s ~/.dotfiles/.vimrc ~/.vimrc
     ln -s ~/.dotfiles/.vim ~/.vim
 
-# BASH ALIASES
-    ln -s ~/.dotfiles/.bash_aliases ~/.bash_aliases
+# BASH  
+    ln -s ~/.dotfiles/.bash_profiles ~/.bash_profiles
 
 
 
