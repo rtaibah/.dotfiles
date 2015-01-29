@@ -6,5 +6,9 @@ export CLICOLOR=1
 export LSCOLORS=ExFxBxDxCxegedabagacad
 alias ls='ls -GFh'
 
-# Git location
-export PATH="$HOME/opt/git/bin:$PATH"
+## Display git location in bash. Based on https://github.com/jimeh/git-aware-prompt ##
+export GITAWAREPROMPT=~/.dotfiles/git-aware-prompt
+source $GITAWAREPROMPT/main.sh
+export PS1="\u@\h \w \[$txtcyn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrst\]\$ "# Git location
+# Prompt for sudo -s
+export SUDO_PS1="\[$bakred\]\u@\h\[$txtrst\] \w\$ "
