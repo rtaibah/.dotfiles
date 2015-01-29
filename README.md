@@ -3,12 +3,11 @@ dotfiles
 
 My dotfiles files
 
-# VIM CONFIGURATION
-Installation:
+# INSTALLATION 
 
 Clone the repository to your home directory:
 
-    git clone https://github.com/rtaibah/vim-files.git
+    git clone git@github.com:rtaibah/.dotfiles.git
 
 Next install the Vim plugins:
 
@@ -16,13 +15,9 @@ Next install the Vim plugins:
     git submodule init
     git submodule update
 
-Finally create a symlink to the .vimrc file in your home directory:
+Finally, symlink these
 
-    ln -s ~/.dotfiles/.vimrc ~/.vimrc
-    ln -s ~/.dotfiles/.vim ~/.vim
-
-# BASH  
-    ln -s ~/.dotfiles/.bash_profiles ~/.bash_profiles
+    ln -s ~/.dotfiles/.vimrc ~/.vimrc && ln -s ~/.dotfiles/.vim ~/.vim && ln -s ~/.dotfiles/.bash_profiles ~/.bash_profiles
 
 
 
