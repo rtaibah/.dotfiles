@@ -97,3 +97,7 @@ au BufRead /tmp/mutt-* set tw=72
 
 " Store swap files in fixed location, not current directory.
 set dir=~/.vimswap//,/var/tmp//,/tmp//,.
+
+" Move up and down within a single line that's word-wrapped 
+nnoremap j gj
+nnoremap k gk
