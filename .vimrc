@@ -10,19 +10,7 @@
 "
 " Disable VI compatibility mode.
 set nocompatible
-
-" @Theme
-" if has('gui_running')
-	" Desert is a nice color scheme but I should really explore my options.
-"	 colorscheme desert
-	
-	" Override the columns and lines in the .gvimrc file if need be for each different computer based on its screen resolution.
-"	 set columns=170 lines=60
-"	 set guioptions=ac
-" else
-	 " Need to pick a decent color scheme for the Terminal that works across most of them.
-"	 colorscheme default
-" endif
+set encoding=utf-8
 
 " Highlight matching bracket.
 set showmatch
@@ -56,8 +44,25 @@ set laststatus=2
 
 " @Text Formatting
 
-" No tabs, just spaces!
-set autoindent shiftwidth=2 softtabstop=2
+" PEP8 Indentation
+au BufNewFile,BufRead *.py
+    \ set tabstop=4 |
+    \ set softtabstop=4 |
+    \ set shiftwidth=4 |
+    \ set textwidth=79 |
+    \ set expandtab |
+    \ set autoindent |
+    \ set fileformat=unix |
+
+" Other Indentation
+au BufNewFile,BufRead *.js, *.html, *.css
+    \ set tabstop=2 |
+    \ set softtabstop=2 |
+    \ set shiftwidth=2 |
+
+" Flag Unnecessary Whitspace
+highlight BadWhitespace ctermbg=red guibg=darkred
+au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 
 " Expand <Tab> with space.
 set expandtab
@@ -74,8 +79,9 @@ set copyindent
 " Remap jj to escape in insert mode as its unlikely I will ever need to type jj and its much faster then hitting the <Esc> key.
 inoremap jj <Esc>
 
-" NERDTree Mapping
+" NERDTree Settings
 map <C-n> :NERDTreeToggle<CR>
+let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
 
 " Pathogen load
 execute pathogen#infect()
@@ -92,12 +98,57 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 
-" Set columns to 72 in Mutt
-au BufRead /tmp/mutt-* set tw=72
-
 " Store swap files in fixed location, not current directory.
 set dir=~/.vimswap//,/var/tmp//,/tmp//,.
 
 " Move up and down within a single line that's word-wrapped 
 nnoremap j gj
 nnoremap k gk
+
+" Folding
+set foldmethod=indent
+set foldlevelstart=99
+
+" Enable folding with the spacebar
+nnoremap <space> za
+
+" Enable simplyfold plugin
+" https://github.com/tmhedberg/SimpylFold
+let g:SimpylFold_docstring_preview = 1
+
+let javaScript_fold=1         " JavaScript
+let perl_fold=1               " Perl
+let php_folding=1             " PHP
+let r_syntax_folding=1        " R
+let ruby_fold=1               " Ruby
+let sh_fold_enabled=1         " sh
+let vimsyn_folding='af'       " Vim script
+let xml_syntax_folding=1      " XML
+
+"Add a color column
+set colorcolumn=80
+highlight ColorColumn ctermbg=0 guibg=lightgrey
+
+" YouCompleteMe Configs
+let g:ycm_autoclose_preview_window_after_completion=1
+map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+"python with virtualenv support
+py << EOF
+import os
+import sys
+if 'VIRTUAL_ENV' in os.environ:
+  project_base_dir = os.environ['VIRTUAL_ENV']
+  activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+  execfile(activate_this, dict(__file__=activate_this))
+EOF
+
+let python_highlight_all=1
+
+"Color scheme
+if has('gui_running')
+  set background=dark
+  colorscheme solarized
+else
+  colorscheme zenburn
+endif

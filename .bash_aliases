@@ -28,7 +28,7 @@ alias apple="sudo mount -t hfsplus -o force,rw /dev/sda2 /media/rtaibah/apple/"
 # unmount apple partition
 alias uapple="sudo umount /media/rtaibah/apple"
 # todo.txt alias
-alias t="c && ~/software/todo.txt-cli/todo.sh"
+alias t="c && ~/.todo/todo.sh"
 # Whats My IP
 alias i='ifconfig eth1 | grep "inet addr" | cut -d: -f2 | awk "{print \$1}"'
 
