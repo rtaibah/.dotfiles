@@ -27,6 +27,7 @@ Plugin 'scrooloose/syntastic.git'
 Plugin 'altercation/vim-colors-solarized.git'
 Plugin 'jnurmine/Zenburn.git'
 Plugin 'vim-airline/vim-airline.git'
+Plugin 'powerline/fonts'
 Plugin 'nvie/vim-flake8'
 
 " All of your Plugins must be added before the following line
@@ -49,6 +50,9 @@ filetype plugin on
 
 " Disable VI compatibility mode.
 set encoding=utf-8
+
+" Highlight cursor line.
+set cursorline
 
 " Highlight matching bracket.
 set showmatch
@@ -173,14 +177,17 @@ endif
 " vim-flake8 settings
 autocmd BufWritePost *.py call Flake8()
 
-" YouCompleteMe Configs
+" YouCompleteMe settings 
 let g:ycm_autoclose_preview_window_after_completion=1
 map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
-" NERDTree Settings
+" NERDTree settings
 map <C-n> :NERDTreeToggle<CR>
 let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
 
 " Enable simplyfold plugin
 " https://github.com/tmhedberg/SimpylFold
 let g:SimpylFold_docstring_preview = 1
+
+" Air-line settings
+let g:airline_powerline_fonts = 1
