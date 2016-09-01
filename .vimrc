@@ -96,10 +96,16 @@ au BufNewFile,BufRead *.py
     \ set fileformat=unix |
 
 " Other Indentation
-au BufNewFile,BufRead *.js, *.html, *.css
-    \ set tabstop=2 |
-    \ set softtabstop=2 |
-    \ set shiftwidth=2 |
+"au BufNewFile,BufRead *.js, *.html, *.css, *.jsx
+"    \ set tabstop=2 |
+"    \ set softtabstop=2 |
+"    \ set shiftwidth=2 |
+"    \ set autoindent |
+
+autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
+autocmd Filetype *.jsx setlocal ts=2 sts=2 sw=2
+autocmd Filetype html setlocal ts=2 sts=2 sw=2
+autocmd Filetype css setlocal ts=2 sts=2 sw=2
 
 " Flag Unnecessary Whitspace
 highlight BadWhitespace ctermbg=red guibg=darkred

@@ -134,12 +134,12 @@ alias emacs='echo "emacs sucks " && sleep 2 && vim'
 # Music
 ###############################################################################
 
-alias defcon='mplayer http://uwstream3.somafm.com:6200'
-alias groove='mplayer http://uwstream3.somafm.com:8032'
-alias lush='mplayer http://uwstream2.somafm.com:8800' 
-alias space='mplayer http://xstream1.somafm.com:8000' 
-alias indie='mplayer http://xstream1.somafm.com:8090' 
-alias cover='mplayer http://uwstream3.somafm.com:8700'
+alias defcon='mplayer http://ice1.somafm.com/defcon-128-mp3'
+alias groove='mplayer http://ice1.somafm.com/groovesalad-128-mp3'
+alias lush='mplayer http://ice1.somafm.com/lush-128-mp3' 
+alias space='mplayer http://ice1.somafm.com/spacestation-128-mp3' 
+alias indie='mplayer http://ice1.somafm.com/indiepop-128-mp3' 
+alias cover='mplayer http://ice1.somafm.com/covers-128-mp3'
 
 ###############################################################################
 # Servers 
