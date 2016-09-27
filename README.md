@@ -11,10 +11,8 @@ Clone the repository to your home directory:
 
 Symlink these
 
-    ln -s ~/.dotfiles/.vimrc ~/.vimrc && ln -s ~/.dotfiles/.vim ~/.vim && ln -s ~/.dotfiles/.bash_profiles ~/.bash_profiles
+    ln -s ~/.dotfiles/.vimrc ~/.vimrc && ln -s ~/.dotfiles/.vim ~/.vim && ln -s ~/.dotfiles/.bash_profiles ~/.bash_profiles && ln -s ~/.dotfiles/.tmux.conf ~/.tmux.conf
 
 Install Plugins in Vim
-    :PluginsInstall
 
-
-
+    vim +PluginsInstall +qall

@@ -1,12 +1,16 @@
 " One .vimrc File To Rule Them All.
-"
-" Version: 0.8.0
-" Last Change: 12-04-2014 16:39 AM GMT+3
+
+" Version: 1.0.0
+" Last Change: 27-09-2016 12:38 AM GMT+3
 " Author: Rami Taibah 
 " Maintainer: http://rtaibah.com
 " License: http://opensource.org/licenses/bsd-license.php
 
-" Vundle
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                               Vundle                                        "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
@@ -19,16 +23,20 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'scrooloose/nerdtree.git'
-Plugin 'slim-template/vim-slim.git'
 Plugin 'plasticboy/vim-markdown.git'
 Plugin 'tmhedberg/SimpylFold.git'
 Plugin 'Valloric/YouCompleteMe.git'
 Plugin 'scrooloose/syntastic.git'
 Plugin 'altercation/vim-colors-solarized.git'
 Plugin 'jnurmine/Zenburn.git'
-Plugin 'vim-airline/vim-airline.git'
-Plugin 'powerline/fonts'
 Plugin 'nvie/vim-flake8'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'edkolev/tmuxline.vim'
+Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
+Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'Townk/vim-autoclose'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -46,105 +54,63 @@ filetype plugin on
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
-" @General
 
-" Disable VI compatibility mode.
-set encoding=utf-8
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                               GENERAL SETTINGS                              "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Highlight cursor line.
-set cursorline
+set dir=~/.vimswap//,/var/tmp//,/tmp//,. " Swap files locaiton 
+set encoding=utf-8 " Disable VI compatibility mode.
+set cursorline " Highlight cursor line.
+set showmatch " Highlight matching bracket.
+set hlsearch " Highlight all search patterns
+:set number " Add line numbers.
+set incsearch " Incremental search.
+set ignorecase smartcase " Search case unsensetive unless contains uppercase
+set ruler " Show line and column number 
+set showmode " Show the current mode.
+set scrolloff=3 " Keep at least 3 line around the cursor.
+set laststatus=2 " Always show a status line.
 
-" Highlight matching bracket.
-set showmatch
 
-" Add line numbers
-:set number
-
-" When there is a previous search pattern, highlight all its matches.
-set hlsearch
-
-" Use incremental search (find as you type).
-set incsearch
-
-" Make searches case-insensitive, unless they contain upper-case letters.
-set ignorecase smartcase
-
-"Show the line and column number of the cursor position and the %progress through file.
-set ruler
-
-" Show the current command in the lower right corner.
-set showcmd
-
-" Show the current mode.
-set showmode
-
-" Keep at least 3 line around the cursor.
-set scrolloff=3
-
-" Always show a status line.
-set laststatus=2
-
-""""" @Text Formatting """""
-" PEP8 Indentation
-au BufNewFile,BufRead *.py
-    \ set tabstop=4 |
-    \ set softtabstop=4 |
-    \ set shiftwidth=4 |
-    \ set textwidth=79 |
-    \ set expandtab |
-    \ set autoindent |
-    \ set fileformat=unix |
-
-" Other Indentation
-"au BufNewFile,BufRead *.js, *.html, *.css, *.jsx
-"    \ set tabstop=2 |
-"    \ set softtabstop=2 |
-"    \ set shiftwidth=2 |
-"    \ set autoindent |
-
-autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
-autocmd Filetype *.jsx setlocal ts=2 sts=2 sw=2
-autocmd Filetype html setlocal ts=2 sts=2 sw=2
-autocmd Filetype css setlocal ts=2 sts=2 sw=2
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                               TEXT FORMATTING                               "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Flag Unnecessary Whitspace
 highlight BadWhitespace ctermbg=red guibg=darkred
 au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 
-" Expand <Tab> with space.
-set expandtab
+set expandtab " Expand <Tab> with space.
+set tabstop=4 " Just so that files with tabs can be displayed properly.
+set copyindent " Use existing indents for new indents.
 
-" Just so that files with tabs can be displayed properly.
-set tabstop=4
 
-" Use existing indents for new indents.
-set copyindent
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                               MAPPINGS                                      "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-""""" @Mappings """""
-" Remap jj to escape in insert mode 
-inoremap jj <Esc>
+inoremap jj <Esc>  "Remap jj to escape in insert mode. 
 
 " Move up and down within a single line that's word-wrapped 
 nnoremap j gj
 nnoremap k gk
 
-""""" @Window Movement and Management """"""
 " Quicker window movement
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 
-" Store swap files in fixed location, not current directory.
-set dir=~/.vimswap//,/var/tmp//,/tmp//,.
+nnoremap <space> za "Enable folding with the spacebar.
 
-""""" Folding """""
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                               FOLDING                                       "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 set foldmethod=indent
 set foldlevelstart=99
-
-" Enable folding with the spacebar
-nnoremap <space> za
-
 let javaScript_fold=1         " JavaScript
 let perl_fold=1               " Perl
 let php_folding=1             " PHP
@@ -154,9 +120,27 @@ let sh_fold_enabled=1         " sh
 let vimsyn_folding='af'       " Vim script
 let xml_syntax_folding=1      " XML
 
-"Add a color column
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                               STYLE                                         "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Add a color column.
 set colorcolumn=80
 highlight ColorColumn ctermbg=0 guibg=lightgrey
+
+"Color scheme
+if has('gui_running')
+  set background=dark
+  colorscheme solarized
+else
+  colorscheme zenburn
+endif
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                               PYTHON SETTINGS                               "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "python with virtualenv support
 py << EOF
@@ -172,13 +156,24 @@ EOF
 let python_highlight_all=1
 syntax on
 
-"Color scheme
-if has('gui_running')
-  set background=dark
-  colorscheme solarized
-else
-  colorscheme zenburn
-endif
+" PEP8 Indentation
+au BufNewFile,BufRead *.py
+    \ set tabstop=4 |
+    \ set softtabstop=4 |
+    \ set shiftwidth=4 |
+    \ set textwidth=79 |
+    \ set expandtab |
+    \ set autoindent |
+    \ set fileformat=unix |
+autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
+autocmd Filetype *.jsx setlocal ts=2 sts=2 sw=2
+autocmd Filetype html setlocal ts=2 sts=2 sw=2
+autocmd Filetype css setlocal ts=2 sts=2 sw=2
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                               PLUGINS SETTINGS                              "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " vim-flake8 settings
 autocmd BufWritePost *.py call Flake8()
@@ -192,8 +187,22 @@ map <C-n> :NERDTreeToggle<CR>
 let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
 
 " Enable simplyfold plugin
-" https://github.com/tmhedberg/SimpylFold
-let g:SimpylFold_docstring_preview = 1
+let g:SimpylFold_docstring_preview = 1 " Enable.
 
-" Air-line settings
+" Airline settings
 let g:airline_powerline_fonts = 1
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+let g:airline_left_sep = '»'
+let g:airline_left_sep = '▶'
+let g:airline_right_sep = '«'
+let g:airline_right_sep = '◀'
+let g:airline_symbols.linenr = '␊'
+let g:airline_symbols.linenr = '␤'
+let g:airline_symbols.linenr = '¶'
+let g:airline_symbols.branch = '⎇'
+let g:airline_symbols.paste = 'ρ'
+let g:airline_symbols.paste = 'Þ'
+let g:airline_symbols.paste = '∥'
+let g:airline_symbols.whitespace = 'Ξ'

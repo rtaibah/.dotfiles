@@ -10,6 +10,7 @@ alias c='clear'
 alias g='grep'
 alias xx="exit"
 
+
 # Search history
 alias h="history | grep"
 # Search processes
