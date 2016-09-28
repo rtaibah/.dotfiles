@@ -1,7 +1,7 @@
 " One .vimrc File To Rule Them All.
 
-" Version: 1.0.0
-" Last Change: 27-09-2016 12:38 AM GMT+3
+" Version: 1.0.1
+" Last Change: 28-09-2016 11:22 AM GMT+3
 " Author: Rami Taibah 
 " Maintainer: http://rtaibah.com
 " License: http://opensource.org/licenses/bsd-license.php
@@ -36,7 +36,13 @@ Plugin 'edkolev/tmuxline.vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'nathanaelkane/vim-indent-guides'
-Plugin 'Townk/vim-autoclose'
+Plugin 'Raimondi/delimitMate'
+Plugin 'mhinz/vim-signify'
+Plugin 'kshenoy/vim-signature'
+Plugin 'tpope/vim-surround'
+Plugin 'easymotion/vim-easymotion'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'marijnh/tern_for_vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -71,6 +77,20 @@ set ruler " Show line and column number
 set showmode " Show the current mode.
 set scrolloff=3 " Keep at least 3 line around the cursor.
 set laststatus=2 " Always show a status line.
+set timeoutlen=300 " Mapping timeout
+set ttimeoutlen=50 " Keycode timeout
+set mouse=a " Enable mouse
+set mousehide " Hide when characters are typed
+
+" Relative line number
+function! NumberToggle()
+  if(&relativenumber == 1)
+    set norelativenumber
+  else
+    set relativenumber
+  endif
+endfunc
+nnoremap <C-r> :call NumberToggle()<cr>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -90,7 +110,8 @@ set copyindent " Use existing indents for new indents.
 "                               MAPPINGS                                      "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-inoremap jj <Esc>  "Remap jj to escape in insert mode. 
+"Remap jj to escape in insert mode.
+inoremap jj <Esc>
 
 " Move up and down within a single line that's word-wrapped 
 nnoremap j gj
@@ -102,7 +123,8 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 
-nnoremap <space> za "Enable folding with the spacebar.
+"Enable folding with the spacebar.
+nnoremap <space> za 
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -206,3 +228,12 @@ let g:airline_symbols.paste = 'ρ'
 let g:airline_symbols.paste = 'Þ'
 let g:airline_symbols.paste = '∥'
 let g:airline_symbols.whitespace = 'Ξ'
+
+" vim-indent-guides
+let g:indent_guides_enable_on_vim_startup = 1
+set ts=4 sw=4 noet 
+let g:indent_guides_auto_colors = 0
+hi IndentGuidesOdd  ctermbg=235
+hi IndentGuidesEven ctermbg=236
+"let g:indent_guides_start_level=2
+"let g:indent_guides_guide_size=1
