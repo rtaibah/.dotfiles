@@ -2,7 +2,7 @@
 
 " Version: 1.0.1
 " Last Change: 28-09-2016 11:22 AM GMT+3
-" Author: Rami Taibah 
+" Author: Rami Taibah
 " Maintainer: http://rtaibah.com
 " License: http://opensource.org/licenses/bsd-license.php
 
@@ -42,7 +42,6 @@ Plugin 'kshenoy/vim-signature'
 Plugin 'tpope/vim-surround'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'marijnh/tern_for_vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -65,7 +64,7 @@ filetype plugin on
 "                               GENERAL SETTINGS                              "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-set dir=~/.vimswap//,/var/tmp//,/tmp//,. " Swap files locaiton 
+set dir=~/.vimswap//,/var/tmp//,/tmp//,. " Swap files locaiton
 set encoding=utf-8 " Disable VI compatibility mode.
 set cursorline " Highlight cursor line.
 set showmatch " Highlight matching bracket.
@@ -73,12 +72,12 @@ set hlsearch " Highlight all search patterns
 :set number " Add line numbers.
 set incsearch " Incremental search.
 set ignorecase smartcase " Search case unsensetive unless contains uppercase
-set ruler " Show line and column number 
+set ruler " Show line and column number
 set showmode " Show the current mode.
-set scrolloff=3 " Keep at least 3 line around the cursor.
+set scrolloff=5 " Keep at least 3 line around the cursor.
 set laststatus=2 " Always show a status line.
-set timeoutlen=300 " Mapping timeout
-set ttimeoutlen=50 " Keycode timeout
+"set timeoutlen=300 " Mapping timeout
+"set ttimeoutlen=50 " Keycode timeout
 set mouse=a " Enable mouse
 set mousehide " Hide when characters are typed
 
@@ -90,7 +89,7 @@ function! NumberToggle()
     set relativenumber
   endif
 endfunc
-nnoremap <C-r> :call NumberToggle()<cr>
+nnoremap <C-I> :call NumberToggle()<CR>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -110,10 +109,13 @@ set copyindent " Use existing indents for new indents.
 "                               MAPPINGS                                      "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-"Remap jj to escape in insert mode.
+" Remap leader
+:let mapleader=","
+
+" Remap jj to escape in insert mode.
 inoremap jj <Esc>
 
-" Move up and down within a single line that's word-wrapped 
+" Move up and down within a single line that's word-wrapped
 nnoremap j gj
 nnoremap k gk
 
@@ -124,7 +126,7 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 
 "Enable folding with the spacebar.
-nnoremap <space> za 
+nnoremap <space> za
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -200,7 +202,7 @@ autocmd Filetype css setlocal ts=2 sts=2 sw=2
 " vim-flake8 settings
 autocmd BufWritePost *.py call Flake8()
 
-" YouCompleteMe settings 
+" YouCompleteMe settings
 let g:ycm_autoclose_preview_window_after_completion=1
 map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
@@ -231,9 +233,7 @@ let g:airline_symbols.whitespace = 'Ξ'
 
 " vim-indent-guides
 let g:indent_guides_enable_on_vim_startup = 1
-set ts=4 sw=4 noet 
+set ts=4 sw=4 noet
 let g:indent_guides_auto_colors = 0
 hi IndentGuidesOdd  ctermbg=235
 hi IndentGuidesEven ctermbg=236
-"let g:indent_guides_start_level=2
-"let g:indent_guides_guide_size=1

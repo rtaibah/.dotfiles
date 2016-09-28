@@ -116,6 +116,12 @@ alias apt-show='apt-cache show'
 alias apt-autoclean='sudo apt-get autoclean' 
 alias apt-autoremove='sudo apt-get autoremove' 
 
+###############################################################################
+# Vim 
+###############################################################################
+
+alias v='vim'
+alias vinst='vim +PluginInstall +qall'
 
 ###############################################################################
 # Vagrant
