@@ -238,3 +238,7 @@ set ts=4 sw=4 noet
 let g:indent_guides_auto_colors = 0
 hi IndentGuidesOdd  ctermbg=235
 hi IndentGuidesEven ctermbg=236
+
+" This should be in general settings, but for some reason it's being
+" overwritten by the file
+hi MatchParen cterm=none ctermbg=green ctermfg=blue
