@@ -8,6 +8,9 @@ My dotfiles files
 Clone the repository to your home directory:
 
     git clone git@github.com:rtaibah/.dotfiles.git
+    
+Install Vundle
+    git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 Symlink these
 
@@ -15,4 +18,4 @@ Symlink these
 
 Install Plugins in Vim
 
-    vim +PluginsInstall +qall
+    :PluginInstall
