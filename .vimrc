@@ -1,5 +1,4 @@
 " One .vimrc File To Rule Them All.
-
 " Version: 1.0.1
 " Last Change: 28-09-2016 11:22 AM GMT+3
 " Author: Rami Taibah
@@ -81,6 +80,7 @@ set laststatus=2 " Always show a status line.
 "set ttimeoutlen=50 " Keycode timeout
 set mouse=a " Enable mouse
 set mousehide " Hide when characters are typed
+set backspace=2 " make backspace work like most other apps"
 
 " Relative line number
 function! NumberToggle()
@@ -161,6 +161,13 @@ if has('gui_running')
 else
   colorscheme zenburn
 endif
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                               JS SETTINGS                                   "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+let g:syntastic_javascript_checkers = ['eslint']
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
