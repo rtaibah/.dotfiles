@@ -10,6 +10,7 @@ Clone the repository to your home directory:
     git clone git@github.com:rtaibah/.dotfiles.git
     
 Install Vundle
+
     git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 Symlink these
@@ -18,4 +19,4 @@ Symlink these
 
 Install Plugins in Vim
 
-    :PluginInstall
+	vim +PluginInstall +qall
