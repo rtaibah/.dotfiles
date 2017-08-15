@@ -6,57 +6,38 @@
 " License: http://opensource.org/licenses/bsd-license.php
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                               Vundle                                        "
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 set nocompatible              " be iMproved, required
-filetype off                  " required
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
 
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'scrooloose/nerdtree.git'
-Plugin 'plasticboy/vim-markdown.git'
-Plugin 'tmhedberg/SimpylFold.git'
-Plugin 'Valloric/YouCompleteMe.git'
-Plugin 'scrooloose/syntastic.git'
-Plugin 'ajh17/Spacegray.vim'
-Plugin 'nvie/vim-flake8'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'edkolev/tmuxline.vim'
-Plugin 'pangloss/vim-javascript'
-Plugin 'mxw/vim-jsx'
-Plugin 'nathanaelkane/vim-indent-guides'
-Plugin 'Raimondi/delimitMate'
-Plugin 'mhinz/vim-signify'
-Plugin 'kshenoy/vim-signature'
-Plugin 'tpope/vim-surround'
-Plugin 'easymotion/vim-easymotion'
-Plugin 'tpope/vim-fugitive'
-Plugin 'leshill/vim-json'
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                               VIM-PLUG									  "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+call plug#begin('~/.vim/plugged')
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
+Plug 'VundleVim/Vundle.vim'
+Plug 'scrooloose/nerdtree.git'
+Plug 'plasticboy/vim-markdown.git'
+Plug 'tmhedberg/SimpylFold.git'
+Plug 'Valloric/YouCompleteMe.git'
+Plug 'scrooloose/syntastic.git'
+Plug 'ajh17/Spacegray.vim'
+Plug 'nvie/vim-flake8'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'edkolev/tmuxline.vim'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'Raimondi/delimitMate'
+Plug 'mhinz/vim-signify'
+Plug 'kshenoy/vim-signature'
+Plug 'tpope/vim-surround'
+Plug 'easymotion/vim-easymotion'
+Plug 'tpope/vim-fugitive'
+Plug 'leshill/vim-json'
 
-" To ignore plugin indent changes, instead use:
-filetype plugin on
-
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
+call plug#end()
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -154,9 +135,8 @@ set colorcolumn=80
 highlight ColorColumn ctermbg=0 guibg=lightgrey
 
 "Color scheme
-syntax enable
-  set background=dark
-  colorscheme spacegray 
+set background=dark
+colorscheme spacegray 
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -183,7 +163,6 @@ EOF
 
 " Make code look pretty
 let python_highlight_all=1
-syntax on
 
 " PEP8 Indentation
 au BufNewFile,BufRead *.py
