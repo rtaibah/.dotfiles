@@ -16,11 +16,11 @@ set nocompatible              " be iMproved, required
 call plug#begin('~/.vim/plugged')
 
 Plug 'VundleVim/Vundle.vim'
-Plug 'scrooloose/nerdtree.git'
-Plug 'plasticboy/vim-markdown.git'
-Plug 'tmhedberg/SimpylFold.git'
-Plug 'Valloric/YouCompleteMe.git'
-Plug 'scrooloose/syntastic.git'
+Plug 'scrooloose/nerdtree'
+Plug 'plasticboy/vim-markdown'
+Plug 'tmhedberg/SimpylFold'
+Plug 'Valloric/YouCompleteMe'
+Plug 'vim-syntastic/syntastic'
 Plug 'ajh17/Spacegray.vim'
 Plug 'nvie/vim-flake8'
 Plug 'vim-airline/vim-airline'
@@ -36,6 +36,9 @@ Plug 'tpope/vim-surround'
 Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-fugitive'
 Plug 'leshill/vim-json'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } 
+Plug 'junegunn/fzf.vim'
+Plug 'jnurmine/Zenburn'
 
 call plug#end()
 
