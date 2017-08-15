@@ -26,8 +26,7 @@ Plugin 'plasticboy/vim-markdown.git'
 Plugin 'tmhedberg/SimpylFold.git'
 Plugin 'Valloric/YouCompleteMe.git'
 Plugin 'scrooloose/syntastic.git'
-Plugin 'altercation/vim-colors-solarized.git'
-Plugin 'jnurmine/Zenburn.git'
+Plugin 'ajh17/Spacegray.vim'
 Plugin 'nvie/vim-flake8'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
@@ -40,8 +39,8 @@ Plugin 'mhinz/vim-signify'
 Plugin 'kshenoy/vim-signature'
 Plugin 'tpope/vim-surround'
 Plugin 'easymotion/vim-easymotion'
-Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'tpope/vim-fugitive'
+Plugin 'leshill/vim-json'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -155,9 +154,9 @@ set colorcolumn=80
 highlight ColorColumn ctermbg=0 guibg=lightgrey
 
 "Color scheme
-	syntax enable
+syntax enable
   set background=dark
-  colorscheme solarized
+  colorscheme spacegray 
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -165,7 +164,8 @@ highlight ColorColumn ctermbg=0 guibg=lightgrey
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 let g:syntastic_javascript_checkers = ['eslint']
-
+let g:javascript_plugin_flow = 1
+let g:jsx_ext_required = 0
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                               PYTHON SETTINGS                               "
@@ -240,8 +240,8 @@ let g:airline_symbols.whitespace = 'Ξ'
 let g:indent_guides_enable_on_vim_startup = 1
 set ts=4 sw=4 noet
 let g:indent_guides_auto_colors = 0
-hi IndentGuidesOdd  ctermbg=235
-hi IndentGuidesEven ctermbg=236
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=233
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=235
 
 " This should be in general settings, but for some reason it's being
 " overwritten by the file
