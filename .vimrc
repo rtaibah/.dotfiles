@@ -155,12 +155,9 @@ set colorcolumn=80
 highlight ColorColumn ctermbg=0 guibg=lightgrey
 
 "Color scheme
-if has('gui_running')
+	syntax enable
   set background=dark
   colorscheme solarized
-else
-  colorscheme zenburn
-endif
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
