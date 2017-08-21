@@ -4,7 +4,7 @@
 " Author: Rami Taibah
 " Maintainer: http://rtaibah.com
 " License: http://opensource.org/licenses/bsd-license.php
-
+"
 
 
 set nocompatible              " be iMproved, required
@@ -20,7 +20,6 @@ Plug 'scrooloose/nerdtree'
 Plug 'plasticboy/vim-markdown'
 Plug 'tmhedberg/SimpylFold'
 Plug 'Valloric/YouCompleteMe'
-Plug 'vim-syntastic/syntastic'
 Plug 'ajh17/Spacegray.vim'
 Plug 'nvie/vim-flake8'
 Plug 'vim-airline/vim-airline'
@@ -39,6 +38,11 @@ Plug 'leshill/vim-json'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } 
 Plug 'junegunn/fzf.vim'
 Plug 'jnurmine/Zenburn'
+Plug 'prettier/vim-prettier'
+Plug 'mattn/emmet-vim'
+Plug 'ternjs/tern_for_vim'
+Plug 'vim-syntastic/syntastic'
+
 
 call plug#end()
 
@@ -149,6 +153,13 @@ colorscheme spacegray
 let g:syntastic_javascript_checkers = ['eslint']
 let g:javascript_plugin_flow = 1
 let g:jsx_ext_required = 0
+let g:javascript_plugin_jsdoc = 1
+
+"enable keyboard shortcuts
+let g:tern_map_keys=1
+
+""show argument hints
+let g:tern_show_argument_hints='on_hold'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                               PYTHON SETTINGS                               "
@@ -228,3 +239,9 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=235
 " This should be in general settings, but for some reason it's being
 " overwritten by the file
 hi MatchParen cterm=none ctermbg=green ctermfg=blue
+
+" FZF
+imap <c-x><c-l> <plug>(fzf-complete-line) "Line completion"
+
+let g:prettier#autoformat = 0
+autocmd BufWritePre *.js,*.json,*.css,*.scss,*.less,*.graphql PrettierAsync
