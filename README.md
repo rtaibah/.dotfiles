@@ -35,7 +35,7 @@ Install plugins
 
 ### Mac
 
-	cd ~/.vim/bundle/YouCompleteMe
+	cd ~/.vim/plugged/YouCompleteMe
 	./install.py --all
 	:YcmRestartServer
 
@@ -43,7 +43,7 @@ Install plugins
 
 	sudo apt-get install build-essential cmake
 	sudo apt-get install python-dev python3-dev
-	cd ~/.vim/bundle/YouCompleteMe
+	cd ~/.vim/plugged/YouCompleteMe
 	./install.py --all
 	:YcmRestartServer
 
