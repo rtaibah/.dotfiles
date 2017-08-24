@@ -21,6 +21,11 @@ Symlink these
     ln -s ~/.dotfiles/.tmux ~/.tmux && \
     ln -s ~/dotfiles/.bash_aliases ~/.bash_aliases
 
+Initializing Submodules
+
+	git submodule init
+	git submodule update
+
 Install vim-plug
 
 	curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
@@ -30,11 +35,6 @@ Install plugins
 
 	:PlugInstall
 
-
-## git-aware-prompt
-
-	cd ~/.dotfiles
-	git clone git://github.com/jimeh/git-aware-prompt.git
 
 ## YouCompleteMe
 
