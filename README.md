@@ -14,7 +14,7 @@ Clone the repository to your home directory:
 
 Symlink these
 
-    ln -s ~/.dotfiles/.vimrc ~/.vimrc && ln -s ~/.dotfiles/.vim ~/.vim && ln -s ~/.dotfiles/.bashrc ~/.bashrc && ln -s ~/.dotfiles/.tmux.conf ~/.tmux.conf
+    ln -s ~/.dotfiles/.vimrc ~/.vimrc && ln -s ~/.dotfiles/.vim ~/.vim && ln -s ~/.dotfiles/.bashrc ~/.bashrc && ln -s ~/.dotfiles/.tmux.conf ~/.tmux.conf && ln -s ~/dotfiles/.bash_aliases ~/.bash_aliases
 
 Install vim-plug
 
