@@ -14,7 +14,12 @@ Clone the repository to your home directory:
 
 Symlink these
 
-    ln -s ~/.dotfiles/.vimrc ~/.vimrc && ln -s ~/.dotfiles/.vim ~/.vim && ln -s ~/.dotfiles/.bashrc ~/.bashrc && ln -s ~/.dotfiles/.tmux.conf ~/.tmux.conf && ln -s ~/dotfiles/.bash_aliases ~/.bash_aliases
+    ln -s ~/.dotfiles/.vimrc ~/.vimrc && \
+    ln -s ~/.dotfiles/.vim ~/.vim && \
+    ln -s ~/.dotfiles/.bashrc ~/.bashrc &&  \
+    ln -s ~/.dotfiles/.tmux.conf ~/.tmux.conf && \
+    ln -s ~/.dotfiles/.tmux ~/.tmux && \
+    ln -s ~/dotfiles/.bash_aliases ~/.bash_aliases
 
 Install vim-plug
 
@@ -39,6 +44,8 @@ Install plugins
 	./install.py --all
 	:YcmRestartServer
 
+See [YCM documentation](https://github.com/Valloric/YouCompleteMe#mac-os-x) if you face issues.
+
 ### Linux
 
 	sudo apt-get install build-essential cmake
@@ -47,3 +54,10 @@ Install plugins
 	./install.py --all
 	:YcmRestartServer
 
+See [YCM documentation](https://github.com/Valloric/YouCompleteMe#ubuntu-linux-x64) if you face issues.
+
+## Tmux
+
+	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+Install plugins in .tmux.conf by pressing `prefix` + <kbd>I</kbd>
