@@ -15,34 +15,38 @@ set nocompatible              " be iMproved, required
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call plug#begin('~/.vim/plugged')
 
-Plug 'VundleVim/Vundle.vim'
+" Vim General Plugins
 Plug 'scrooloose/nerdtree'
-Plug 'plasticboy/vim-markdown'
-Plug 'tmhedberg/SimpylFold'
-Plug 'Valloric/YouCompleteMe'
 Plug 'ajh17/Spacegray.vim'
-Plug 'nvie/vim-flake8'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'edkolev/tmuxline.vim'
-Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
-Plug 'nathanaelkane/vim-indent-guides'
-Plug 'Raimondi/delimitMate'
-Plug 'mhinz/vim-signify'
+Plug 'Raimondi/delimitMate' "find something better
 Plug 'kshenoy/vim-signature'
 Plug 'tpope/vim-surround'
 Plug 'easymotion/vim-easymotion'
-Plug 'tpope/vim-fugitive'
-Plug 'leshill/vim-json'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } 
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'jnurmine/Zenburn'
-Plug 'prettier/vim-prettier'
 Plug 'mattn/emmet-vim'
+Plug 'plasticboy/vim-markdown'
+
+" Coding Plugins
+Plug 'Valloric/YouCompleteMe'
 Plug 'ternjs/tern_for_vim'
 Plug 'vim-syntastic/syntastic'
+Plug 'prettier/vim-prettier'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
 
+" Javascript-specific Plugins
+Plug 'pangloss/vim-javascript'
+Plug 'leshill/vim-json'
+Plug 'mxw/vim-jsx'
+
+" Python-specific Plugins
+Plug 'tmhedberg/SimpylFold'
+Plug 'nvie/vim-flake8'
 
 call plug#end()
 
@@ -50,7 +54,6 @@ call plug#end()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                               GENERAL SETTINGS                              "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 
 " watch .vimrc for changes and reload
 augroup myvimrc
@@ -150,13 +153,14 @@ highlight ColorColumn ctermbg=0 guibg=lightgrey
 
 "Color scheme
 set background=dark
-colorscheme spacegray 
+colorscheme spacegray
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                               JS SETTINGS                                   "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+let g:syntastic_javascript_eslint_exe='$(npm bin)/eslint'
 let g:syntastic_javascript_checkers = ['eslint']
 let g:javascript_plugin_flow = 1
 let g:jsx_ext_required = 0
@@ -219,10 +223,14 @@ let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
 let g:SimpylFold_docstring_preview = 1 " Enable.
 
 " Airline settings
+let g:airline#extensions#tabline#enabled = 1
+
 let g:airline_powerline_fonts = 1
+
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
+
 let g:airline_left_sep = '»'
 let g:airline_left_sep = '▶'
 let g:airline_right_sep = '«'
@@ -235,6 +243,23 @@ let g:airline_symbols.paste = 'ρ'
 let g:airline_symbols.paste = 'Þ'
 let g:airline_symbols.paste = '∥'
 let g:airline_symbols.whitespace = 'Ξ'
+
+" tmux-line
+let g:tmuxline_preset = {
+      \'a'    : '#S',
+      \'c'    : ['#(whoami)', '#(uptime | cut -d " " -f 1,2,3)'],
+      \'win'  : ['#I', '#W'],
+      \'cwin' : ['#I', '#W', '#F'],
+      \'x'    : '#(date)',
+      \'y'    : ['%R', '%a', '%Y'],
+      \'z'    : '#H'}
+
+let g:tmuxline_separators = {
+    \ 'left' : '',
+    \ 'left_alt': '>',
+    \ 'right' : '',
+    \ 'right_alt' : '<',
+    \ 'space' : ' '}
 
 " vim-indent-guides
 let g:indent_guides_enable_on_vim_startup = 1
@@ -250,5 +275,6 @@ hi MatchParen cterm=none ctermbg=green ctermfg=blue
 " FZF
 imap <c-x><c-l> <plug>(fzf-complete-line) "Line completion"
 
+" Prettier
 let g:prettier#autoformat = 0
 autocmd BufWritePre *.js,*.json,*.css,*.scss,*.less,*.graphql PrettierAsync
