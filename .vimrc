@@ -71,10 +71,8 @@ set incsearch " Incremental search.
 set ignorecase smartcase " Search case unsensetive unless contains uppercase
 set ruler " Show line and column number
 set showmode " Show the current mode.
-set scrolloff=5 " Keep at least 3 line around the cursor.
+set scrolloff=5 " Keep at least 5 line around the cursor.
 set laststatus=2 " Always show a status line.
-"set timeoutlen=300 " Mapping timeout
-"set ttimeoutlen=50 " Keycode timeout
 set mouse=a " Enable mouse
 set mousehide " Hide when characters are typed
 set backspace=2 " make backspace work like most other apps"
@@ -89,6 +87,10 @@ function! NumberToggle()
 endfunc
 nnoremap <C-I> :call NumberToggle()<CR>
 
+" Switching to paste mode
+nnoremap <F2> :set invpaste paste?<CR>
+set pastetoggle=<F2>
+set showmode
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                               TEXT FORMATTING                               "
@@ -96,7 +98,7 @@ nnoremap <C-I> :call NumberToggle()<CR>
 
 " Flag Unnecessary Whitspace
 highlight BadWhitespace ctermbg=red guibg=darkred
-au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+au BufRead,BufNewFile *.py,*.pyw,*.c,*.h,*.js,*.html,*.scss,*.css match BadWhitespace /\s\+$/
 
 set expandtab " Expand <Tab> with space.
 set tabstop=4 " Just so that files with tabs can be displayed properly.
@@ -154,6 +156,9 @@ highlight ColorColumn ctermbg=0 guibg=lightgrey
 "Color scheme
 set background=dark
 colorscheme spacegray
+let g:spacegray_italicize_comments = 1
+let g:spacegray_underline_search = 1
+
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -171,6 +176,11 @@ let g:tern_map_keys=1
 
 ""show argument hints
 let g:tern_show_argument_hints='on_hold'
+
+autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
+autocmd Filetype *.jsx setlocal ts=2 sts=2 sw=2
+autocmd Filetype html setlocal ts=2 sts=2 sw=2
+autocmd Filetype css setlocal ts=2 sts=2 sw=2
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                               PYTHON SETTINGS                               "
@@ -198,10 +208,6 @@ au BufNewFile,BufRead *.py
     \ set expandtab |
     \ set autoindent |
     \ set fileformat=unix |
-autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
-autocmd Filetype *.jsx setlocal ts=2 sts=2 sw=2
-autocmd Filetype html setlocal ts=2 sts=2 sw=2
-autocmd Filetype css setlocal ts=2 sts=2 sw=2
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -276,5 +282,5 @@ hi MatchParen cterm=none ctermbg=green ctermfg=blue
 imap <c-x><c-l> <plug>(fzf-complete-line) "Line completion"
 
 " Prettier
-let g:prettier#autoformat = 0
+let g:prettier#autoformat = 1
 autocmd BufWritePre *.js,*.json,*.css,*.scss,*.less,*.graphql PrettierAsync
