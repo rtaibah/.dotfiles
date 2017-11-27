@@ -100,9 +100,11 @@ set showmode
 highlight BadWhitespace ctermbg=red guibg=darkred
 au BufRead,BufNewFile *.py,*.pyw,*.c,*.h,*.js,*.html,*.scss,*.css match BadWhitespace /\s\+$/
 
+set number
+set smartindent
+set tabstop=2 " Just so that files with tabs can be displayed properly.
+set shiftwidth=2
 set expandtab " Expand <Tab> with space.
-set tabstop=4 " Just so that files with tabs can be displayed properly.
-set copyindent " Use existing indents for new indents.
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -282,5 +284,9 @@ hi MatchParen cterm=none ctermbg=green ctermfg=blue
 imap <c-x><c-l> <plug>(fzf-complete-line) "Line completion"
 
 " Prettier
-let g:prettier#autoformat = 1
-autocmd BufWritePre *.js,*.json,*.css,*.scss,*.less,*.graphql PrettierAsync
+let g:prettier#autoformat = 0
+let g:prettier#config#print_width = 120 
+let g:prettier#config#tab_width = 2
+let g:prettier#config#semi = 'true'
+let g:prettier#config#single_quote = 'true'
+let g:prettier#config#bracket_spacing = 'true'
