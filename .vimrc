@@ -1,6 +1,6 @@
 " One .vimrc File To Rule Them All.
 
-" Last Change: 17-01-2018 15:58 GMT+3
+" Last Change: 17-01-2018 16:32 GMT+3
 " Author: Rami Taibah
 " Maintainer: http://rtaibah.com
 " License: http://opensource.org/licenses/bsd-license.php
@@ -173,6 +173,21 @@ hi MatchParen cterm=none ctermbg=152 ctermfg=white
 
 " Airline
 let g:airline_theme= 'solarized'
+
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                               BUFFERS                                       "  
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Move to the previous buffer with "gp"
+nnoremap gp :bp<CR>
+
+" Move to the next buffer with "gn"
+nnoremap gn :bn<CR>
+
+" List all possible buffers with "gl"
+nnoremap gl :ls<CR>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
