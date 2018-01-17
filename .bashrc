@@ -14,9 +14,7 @@ source $GITAWAREPROMPT/main.sh
 export PS1="\u@\h \w \[$txtcyn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrst\] "# Git location
 
 # Prompt for sudo -s
-export SUDO_PS1="\[$bakred\]\u@\h\[$txtrst\] \w\$ "
-
-#NVM
-export NVM_DIR="~/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-export EDITOR=/usr/bin/vim
+#export SUDO_PS1="\[$bakred\]\u@\h\[$txtrst\] \w\$ "
+#
+#export NVM_DIR="$HOME/.nvm"
+#[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm

@@ -92,6 +92,9 @@ nnoremap <F2> :set invpaste paste?<CR>
 set pastetoggle=<F2>
 set showmode
 
+" Handover clipboard to tmux
+set clipboard=unnamed
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                               TEXT FORMATTING                               "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -285,8 +288,9 @@ imap <c-x><c-l> <plug>(fzf-complete-line) "Line completion"
 
 " Prettier
 let g:prettier#autoformat = 0
-let g:prettier#config#print_width = 120 
+let g:prettier#config#print_width = 80 
 let g:prettier#config#tab_width = 2
 let g:prettier#config#semi = 'true'
 let g:prettier#config#single_quote = 'true'
 let g:prettier#config#bracket_spacing = 'true'
+
