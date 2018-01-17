@@ -1,11 +1,9 @@
 " One .vimrc File To Rule Them All.
-" Version: 1.0.1
-" Last Change: 28-09-2016 11:22 AM GMT+3
+
+" Last Change: 17-01-2018 15:58 GMT+3
 " Author: Rami Taibah
 " Maintainer: http://rtaibah.com
 " License: http://opensource.org/licenses/bsd-license.php
-"
-
 
 set nocompatible              " be iMproved, required
 
@@ -13,11 +11,11 @@ set nocompatible              " be iMproved, required
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                               VIM-PLUG									  "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 call plug#begin('~/.vim/plugged')
 
 " Vim General Plugins
 Plug 'scrooloose/nerdtree'
-Plug 'ajh17/Spacegray.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'edkolev/tmuxline.vim'
@@ -95,6 +93,7 @@ set showmode
 " Handover clipboard to tmux
 set clipboard=unnamed
 
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                               TEXT FORMATTING                               "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -159,11 +158,21 @@ set colorcolumn=80
 highlight ColorColumn ctermbg=0 guibg=lightgrey
 
 "Color scheme
-set background=dark
-colorscheme spacegray
-let g:spacegray_italicize_comments = 1
-let g:spacegray_underline_search = 1
+colorscheme morning
 
+" Gutter color
+highlight clear SignColumn
+
+" Search highlighting
+set hlsearch
+hi Search ctermbg=152
+hi Search ctermfg=white
+
+" Parens highlight  colors
+hi MatchParen cterm=none ctermbg=152 ctermfg=white
+
+" Airline
+let g:airline_theme= 'solarized'
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -186,6 +195,7 @@ autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
 autocmd Filetype *.jsx setlocal ts=2 sts=2 sw=2
 autocmd Filetype html setlocal ts=2 sts=2 sw=2
 autocmd Filetype css setlocal ts=2 sts=2 sw=2
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                               PYTHON SETTINGS                               "
@@ -234,7 +244,6 @@ let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
 let g:SimpylFold_docstring_preview = 1 " Enable.
 
 " Airline settings
-let g:airline#extensions#tabline#enabled = 1
 
 let g:airline_powerline_fonts = 1
 
@@ -242,13 +251,18 @@ if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
 
+" Airlines Tabs
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline#extensions#tabline#formatter = 'unique_tail'
+
 let g:airline_left_sep = '»'
 let g:airline_left_sep = '▶'
 let g:airline_right_sep = '«'
 let g:airline_right_sep = '◀'
 let g:airline_symbols.linenr = '␊'
 let g:airline_symbols.linenr = '␤'
-let g:airline_symbols.linenr = '¶'
+let g:airline_symbols.linenr = 'Ξ'
 let g:airline_symbols.branch = '⎇'
 let g:airline_symbols.paste = 'ρ'
 let g:airline_symbols.paste = 'Þ'
@@ -262,7 +276,6 @@ let g:tmuxline_preset = {
       \'win'  : ['#I', '#W'],
       \'cwin' : ['#I', '#W', '#F'],
       \'x'    : '#(date)',
-      \'y'    : ['%R', '%a', '%Y'],
       \'z'    : '#H'}
 
 let g:tmuxline_separators = {
@@ -274,23 +287,16 @@ let g:tmuxline_separators = {
 
 " vim-indent-guides
 let g:indent_guides_enable_on_vim_startup = 1
-set ts=4 sw=4 noet
-let g:indent_guides_auto_colors = 0
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=233
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=235
-
-" This should be in general settings, but for some reason it's being
-" overwritten by the file
-hi MatchParen cterm=none ctermbg=green ctermfg=blue
+hi IndentGuidesOdd  ctermbg=white
+hi IndentGuidesEven ctermbg=lightgrey
 
 " FZF
 imap <c-x><c-l> <plug>(fzf-complete-line) "Line completion"
 
 " Prettier
 let g:prettier#autoformat = 0
-let g:prettier#config#print_width = 80 
+let g:prettier#config#print_width = 80
 let g:prettier#config#tab_width = 2
 let g:prettier#config#semi = 'true'
 let g:prettier#config#single_quote = 'true'
 let g:prettier#config#bracket_spacing = 'true'
-
