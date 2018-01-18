@@ -27,6 +27,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'mattn/emmet-vim'
 Plug 'plasticboy/vim-markdown'
+Plug 'altercation/vim-colors-solarized'
 
 " Coding Plugins
 Plug 'Valloric/YouCompleteMe'
@@ -64,7 +65,7 @@ set encoding=utf-8 " Disable VI compatibility mode.
 set cursorline " Highlight cursor line.
 set showmatch " Highlight matching bracket.
 set hlsearch " Highlight all search patterns
-:set number " Add line numbers.
+set number " Add line numbers.
 set incsearch " Incremental search.
 set ignorecase smartcase " Search case unsensetive unless contains uppercase
 set ruler " Show line and column number
@@ -92,6 +93,9 @@ set showmode
 
 " Handover clipboard to tmux
 set clipboard=unnamed
+
+" Dont't require saving when switching buffers
+set hidden
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -153,19 +157,21 @@ let xml_syntax_folding=1      " XML
 "                               STYLE                                         "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Add a color column.
-set colorcolumn=80
-highlight ColorColumn ctermbg=0 guibg=lightgrey
-
 "Color scheme
-colorscheme morning
+colorscheme solarized
+
+if has('gui_running')
+  set background=light
+else
+  set background=light
+endif
 
 " Gutter color
 highlight clear SignColumn
 
 " Search highlighting
 set hlsearch
-hi Search ctermbg=152
+hi Search ctermbg=141
 hi Search ctermfg=white
 
 " Parens highlight  colors
@@ -175,9 +181,8 @@ hi MatchParen cterm=none ctermbg=152 ctermfg=white
 let g:airline_theme= 'solarized'
 
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                               BUFFERS                                       "  
+"                               BUFFERS                                       "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Move to the previous buffer with "gp"
@@ -210,34 +215,6 @@ autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
 autocmd Filetype *.jsx setlocal ts=2 sts=2 sw=2
 autocmd Filetype html setlocal ts=2 sts=2 sw=2
 autocmd Filetype css setlocal ts=2 sts=2 sw=2
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                               PYTHON SETTINGS                               "
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-"python with virtualenv support
-py << EOF
-import os
-import sys
-if 'VIRTUAL_ENV' in os.environ:
-  project_base_dir = os.environ['VIRTUAL_ENV']
-  activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
-  execfile(activate_this, dict(__file__=activate_this))
-EOF
-
-" Make code look pretty
-let python_highlight_all=1
-
-" PEP8 Indentation
-au BufNewFile,BufRead *.py
-    \ set tabstop=4 |
-    \ set softtabstop=4 |
-    \ set shiftwidth=4 |
-    \ set textwidth=79 |
-    \ set expandtab |
-    \ set autoindent |
-    \ set fileformat=unix |
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
