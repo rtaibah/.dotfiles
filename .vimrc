@@ -32,7 +32,8 @@ Plug 'altercation/vim-colors-solarized'
 " Coding Plugins
 Plug 'Valloric/YouCompleteMe'
 Plug 'ternjs/tern_for_vim'
-Plug 'vim-syntastic/syntastic'
+"Plug 'vim-syntastic/syntastic' Commented out for ale <- causing slowness
+Plug 'w0rp/ale'
 Plug 'prettier/vim-prettier'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'airblade/vim-gitgutter'
@@ -199,11 +200,17 @@ nnoremap gl :ls<CR>
 "                               JS SETTINGS                                   "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-let g:syntastic_javascript_eslint_exe='$(npm bin)/eslint'
-let g:syntastic_javascript_checkers = ['eslint']
+"Syntastic slowing vim, disable until figure out a solution
+"let g:syntastic_javascript_eslint_exe='$(npm bin)/eslint'
+"let g:syntastic_javascript_checkers = ['eslint']
+
 let g:javascript_plugin_flow = 1
 let g:jsx_ext_required = 0
 let g:javascript_plugin_jsdoc = 1
+
+" StandardJS
+autocmd bufwritepost *.js silent !standard --fix %
+set autoread
 
 "enable keyboard shortcuts
 let g:tern_map_keys=1
