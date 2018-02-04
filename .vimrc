@@ -212,6 +212,10 @@ let g:javascript_plugin_jsdoc = 1
 autocmd bufwritepost *.js silent !standard --fix %
 set autoread
 
+let g:ale_fixers = {'javascript': ['prettier_standard']}
+let g:ale_linters = {'javascript': ['']}
+let g:ale_fix_on_save = 1
+
 "enable keyboard shortcuts
 let g:tern_map_keys=1
 
@@ -245,6 +249,7 @@ let g:SimpylFold_docstring_preview = 1 " Enable.
 " Airline settings
 
 let g:airline_powerline_fonts = 1
+let g:airline#extensions#ale#enabled = 1
 
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
