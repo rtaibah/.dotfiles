@@ -39,18 +39,6 @@ Install plugins
 
 ## YouCompleteMe
 
-### Mac
-
-	cd ~/.vim/plugged/YouCompleteMe
-	./install.py --all
-	:YcmRestartServer
-
-See [YCM documentation](https://github.com/Valloric/YouCompleteMe#mac-os-x) if you face issues.
-
-### Linux
-
-	sudo apt-get install build-essential cmake
-	sudo apt-get install python-dev python3-dev
 	cd ~/.vim/plugged/YouCompleteMe
 	./install.py --all
 	:YcmRestartServer
@@ -62,16 +50,3 @@ See [YCM documentation](https://github.com/Valloric/YouCompleteMe#ubuntu-linux-x
 	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 Install plugins in .tmux.conf by pressing `prefix` + <kbd>I</kbd>
-
-## Powerline Fonts
-
-	cd fonts
-	./install.sh
-	cd ..
-	rm -rf fonts
-
-## General plugins needed
-
-	npm install eslint --global
-
-
