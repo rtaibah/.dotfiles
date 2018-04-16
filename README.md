@@ -60,16 +60,3 @@ See [YCM documentation](https://github.com/Valloric/YouCompleteMe#ubuntu-linux-x
 	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 Install plugins in .tmux.conf by pressing `prefix` + <kbd>I</kbd>
-
-## Powerline Fonts
-
-	cd fonts
-	./install.sh
-	cd ..
-	rm -rf fonts
-
-## General plugins needed
-
-	npm install eslint --global
-
-
