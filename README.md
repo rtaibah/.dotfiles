@@ -39,16 +39,6 @@ Install plugins
 
 ## YouCompleteMe
 
-### Mac
-
-	cd ~/.vim/plugged/YouCompleteMe
-	./install.py --all
-	:YcmRestartServer
-
-See [YCM documentation](https://github.com/Valloric/YouCompleteMe#mac-os-x) if you face issues.
-
-### Arch Linux
-
 	cd ~/.vim/plugged/YouCompleteMe
 	./install.py --all
 	:YcmRestartServer
