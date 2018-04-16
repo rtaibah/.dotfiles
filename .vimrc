@@ -162,9 +162,9 @@ let xml_syntax_folding=1      " XML
 colorscheme solarized
 
 if has('gui_running')
-  set background=light
+  set background=dark
 else
-  set background=light
+  set background=dark
 endif
 
 " Gutter color
@@ -172,8 +172,6 @@ highlight clear SignColumn
 
 " Search highlighting
 set hlsearch
-hi Search ctermbg=141
-hi Search ctermfg=white
 
 " Parens highlight  colors
 hi MatchParen cterm=none ctermbg=152 ctermfg=white
@@ -291,8 +289,6 @@ let g:tmuxline_separators = {
 
 " vim-indent-guides
 let g:indent_guides_enable_on_vim_startup = 1
-hi IndentGuidesOdd  ctermbg=white
-hi IndentGuidesEven ctermbg=lightgrey
 
 " FZF
 imap <c-x><c-l> <plug>(fzf-complete-line) "Line completion"
