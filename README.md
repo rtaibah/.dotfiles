@@ -47,10 +47,8 @@ Install plugins
 
 See [YCM documentation](https://github.com/Valloric/YouCompleteMe#mac-os-x) if you face issues.
 
-### Linux
+### Arch Linux
 
-	sudo apt-get install build-essential cmake
-	sudo apt-get install python-dev python3-dev
 	cd ~/.vim/plugged/YouCompleteMe
 	./install.py --all
 	:YcmRestartServer
