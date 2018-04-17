@@ -2,10 +2,23 @@
 # ~/.bashrc
 #
 
+platform='unknown'
+unamestr=`uname`
+if [[ "$unamestr" == 'Linux' ]]; then
+   platform='linux'
+elif [[ "$unamestr" == 'Darwin' ]]; then
+   platform='osx'
+fi
+
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-alias ls='ls --color=auto'
+if [[ $platform == 'linux' ]]; then
+   alias ls='ls --color=auto'
+elif [[ $platform == 'osx' ]]; then
+   alias ls='ls'
+fi
+
 PS1='[\u@\h \W]\$ '
 
 # >>>>BEGIN ADDED BY CNCHI INSTALLER<<<< #
@@ -24,8 +37,10 @@ if [ -f ~/.bash_aliases ]; then
   . ~/.bash_aliases
 fi
 
-# Solarized Colors
-eval `dircolors ~/.dir_colors/dircolors`
+# Gnome-terminal Solarized Colors
+if [[ $platform == 'linux' ]]; then
+	eval `dircolors ~/.dir_colors/dircolors`
+fi
 
 ## Display git location in bash. Based on https://github.com/jimeh/git-aware-prompt ##
 export GITAWAREPROMPT=~/.dotfiles/git-aware-prompt
