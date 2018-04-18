@@ -31,3 +31,10 @@ eval `dircolors ~/.dir_colors/dircolors`
 export GITAWAREPROMPT=~/.dotfiles/git-aware-prompt
 source $GITAWAREPROMPT/main.sh
 export PS1="\u@\h \w \[$txtcyn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrst\] "# Git location
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+
+PATH="$PATH:$(ruby -e 'print Gem.user_dir')/bin"
+
+export GEM_HOME=$HOME/.gem
