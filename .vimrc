@@ -31,10 +31,10 @@ Plug 'altercation/vim-colors-solarized'
 
 " Coding Plugins
 Plug 'Valloric/YouCompleteMe'
-Plug 'ternjs/tern_for_vim'
-"Plug 'vim-syntastic/syntastic' Commented out for ale <- causing slowness
-Plug 'w0rp/ale'
-Plug 'prettier/vim-prettier'
+"Plug 'ternjs/tern_for_vim'
+Plug 'vim-syntastic/syntastic'
+"Plug 'w0rp/ale'
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
@@ -45,8 +45,8 @@ Plug 'leshill/vim-json'
 Plug 'mxw/vim-jsx'
 
 " Python-specific Plugins
-Plug 'tmhedberg/SimpylFold'
-Plug 'nvie/vim-flake8'
+"Plug 'tmhedberg/SimpylFold'
+"Plug 'nvie/vim-flake8'
 
 call plug#end()
 
@@ -198,27 +198,17 @@ nnoremap gl :ls<CR>
 "                               JS SETTINGS                                   "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-"Syntastic slowing vim, disable until figure out a solution
-"let g:syntastic_javascript_eslint_exe='$(npm bin)/eslint'
-"let g:syntastic_javascript_checkers = ['eslint']
+" Syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 
-let g:javascript_plugin_flow = 1
-let g:jsx_ext_required = 0
-let g:javascript_plugin_jsdoc = 1
-
-" StandardJS
-autocmd bufwritepost *.js silent !standard --fix %
-set autoread
-
-let g:ale_fixers = {'javascript': ['prettier_standard']}
-let g:ale_linters = {'javascript': ['']}
-let g:ale_fix_on_save = 1
-
-"enable keyboard shortcuts
-let g:tern_map_keys=1
-
-""show argument hints
-let g:tern_show_argument_hints='on_hold'
+let g:syntastic_always_populate_loc_list = 0
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_javascript_eslint_exe = 'npm run lint --'
 
 autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
 autocmd Filetype *.jsx setlocal ts=2 sts=2 sw=2
@@ -294,9 +284,11 @@ let g:indent_guides_enable_on_vim_startup = 1
 imap <c-x><c-l> <plug>(fzf-complete-line) "Line completion"
 
 " Prettier
-let g:prettier#autoformat = 0
 let g:prettier#config#print_width = 80
 let g:prettier#config#tab_width = 2
 let g:prettier#config#semi = 'true'
 let g:prettier#config#single_quote = 'true'
 let g:prettier#config#bracket_spacing = 'true'
+let g:prettier#autoformat = 0
+let g:prettier#config#jsx_bracket_same_line = 'false'
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue PrettierAsync

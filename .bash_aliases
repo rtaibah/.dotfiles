@@ -160,3 +160,5 @@ alias do1="ssh root@107.170.92.118"
 ###############################################################################
 
 alias t-source='tmux source-file ~/.tmux.conf'
+
+alias ace='acestream-launcher --player vlc'
