@@ -21,10 +21,8 @@ fi
 
 PS1='[\u@\h \W]\$ '
 
-# >>>>BEGIN ADDED BY CNCHI INSTALLER<<<< #
 BROWSER=/usr/bin/firefox
 EDITOR=/usr/bin/vim
-# >>>>>END ADDED BY CNCHI INSTALLER<<<<< #
 
 # Start i3
 [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx
@@ -47,8 +45,10 @@ export GITAWAREPROMPT=~/.dotfiles/git-aware-prompt
 source $GITAWAREPROMPT/main.sh
 export PS1="\u@\h \w \[$txtcyn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrst\] "# Git location
 
-# Flutter
-export PATH=`pwd`/flutter/bin:$PATH
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-#export PATH="$PATH:$HOME/.rvm/bin"
+export PATH="$PATH:$HOME/.rvm/bin"
+
+PATH="$PATH:$(ruby -e 'print Gem.user_dir')/bin"
+
+export GEM_HOME=$HOME/.gem
