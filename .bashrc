@@ -46,3 +46,9 @@ fi
 export GITAWAREPROMPT=~/.dotfiles/git-aware-prompt
 source $GITAWAREPROMPT/main.sh
 export PS1="\u@\h \w \[$txtcyn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrst\] "# Git location
+
+# Flutter
+export PATH=`pwd`/flutter/bin:$PATH
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+#export PATH="$PATH:$HOME/.rvm/bin"

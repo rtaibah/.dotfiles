@@ -16,6 +16,7 @@ call plug#begin('~/.vim/plugged')
 
 " Vim General Plugins
 Plug 'scrooloose/nerdtree'
+Plug 'tpope/vim-commentary'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'edkolev/tmuxline.vim'
@@ -28,25 +29,43 @@ Plug 'junegunn/fzf.vim'
 Plug 'mattn/emmet-vim'
 Plug 'plasticboy/vim-markdown'
 Plug 'altercation/vim-colors-solarized'
+Plug 'mhartington/oceanic-next'
 
 " Coding Plugins
-Plug 'Valloric/YouCompleteMe'
+"Plug 'Valloric/YouCompleteMe'
 Plug 'ternjs/tern_for_vim'
-"Plug 'vim-syntastic/syntastic' Commented out for ale <- causing slowness
+"Plug 'vim-syntastic/syntastic'
 Plug 'w0rp/ale'
 Plug 'prettier/vim-prettier'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+
+" Language Server
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
 
 " Javascript-specific Plugins
 Plug 'pangloss/vim-javascript'
 Plug 'leshill/vim-json'
 Plug 'mxw/vim-jsx'
+Plug 'othree/yajs.vim'
 
 " Python-specific Plugins
 Plug 'tmhedberg/SimpylFold'
 Plug 'nvie/vim-flake8'
+
+"Plug 'tomlion/vim-solidity'
+
 
 call plug#end()
 
@@ -159,7 +178,9 @@ let xml_syntax_folding=1      " XML
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "Color scheme
-colorscheme solarized
+colorscheme OceanicNext 
+let g:oceanic_next_terminal_bold = 1
+let g:oceanic_next_terminal_italic = 1
 
 if has('gui_running')
   set background=dark
@@ -177,7 +198,7 @@ set hlsearch
 hi MatchParen cterm=none ctermbg=152 ctermfg=white
 
 " Airline
-let g:airline_theme= 'solarized'
+let g:airline_theme='oceanicnext'
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -199,20 +220,12 @@ nnoremap gl :ls<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "Syntastic slowing vim, disable until figure out a solution
-"let g:syntastic_javascript_eslint_exe='$(npm bin)/eslint'
-"let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_javascript_eslint_exe='$(npm bin)/eslint'
+let g:syntastic_javascript_checkers = ['eslint']
 
 let g:javascript_plugin_flow = 1
 let g:jsx_ext_required = 0
 let g:javascript_plugin_jsdoc = 1
-
-" StandardJS
-autocmd bufwritepost *.js silent !standard --fix %
-set autoread
-
-let g:ale_fixers = {'javascript': ['prettier_standard']}
-let g:ale_linters = {'javascript': ['']}
-let g:ale_fix_on_save = 1
 
 "enable keyboard shortcuts
 let g:tern_map_keys=1
@@ -230,19 +243,55 @@ autocmd Filetype css setlocal ts=2 sts=2 sw=2
 "                               PLUGINS SETTINGS                              "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+" LanguageClient
+
+let g:LanguageClient_serverCommands = {
+    \ 'javascript': ['javascript-typescript-stdio'],
+    \ 'javascript.jsx': ['javascript-typescript-stdio']
+    \ }
+nnoremap <leader>l :call LanguageClient_contextMenu()<CR>
+nnoremap K :call LanguageClient#textDocument_hover()<CR>
+nnoremap gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <leader>r :call LanguageClient#textDocument_rename()<CR>
+
+" deoplete
+let g:deoplete#enable_at_startup = 1
+
 " vim-flake8 settings
 autocmd BufWritePost *.py call Flake8()
 
 " YouCompleteMe settings
-let g:ycm_autoclose_preview_window_after_completion=1
-map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+"let g:ycm_autoclose_preview_window_after_completion=1
+"map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 " NERDTree settings
 map <C-n> :NERDTreeToggle<CR>
 let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
 
+"  close vim if the only window left open is a NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
 " Enable simplyfold plugin
 let g:SimpylFold_docstring_preview = 1 " Enable.
+
+" Ale
+let g:ale_linters = {
+\   'python': ['flake8', 'pylint'],
+\   'javascript': ['eslint'],
+\   'vue': ['eslint']
+\}
+
+let g:ale_fixers = {
+  \    'javascript': ['eslint'],
+  \    'typescript': ['prettier', 'tslint'],
+  \    'vue': ['eslint'],
+  \    'scss': ['prettier'],
+  \    'html': ['prettier'],
+  \    'reason': ['refmt']
+\}
+let g:ale_fix_on_save = 1
+nnoremap ]r :ALENextWrap<CR>     " move to the next ALE warning / error
+nnoremap [r :ALEPreviousWrap<CR> " move to the previous ALE warning / error]"
 
 " Airline settings
 
@@ -294,9 +343,14 @@ let g:indent_guides_enable_on_vim_startup = 1
 imap <c-x><c-l> <plug>(fzf-complete-line) "Line completion"
 
 " Prettier
-let g:prettier#autoformat = 0
-let g:prettier#config#print_width = 80
+let g:prettier#config#print_width = 90
 let g:prettier#config#tab_width = 2
-let g:prettier#config#semi = 'true'
+let g:prettier#config#semi = 'false'
 let g:prettier#config#single_quote = 'true'
 let g:prettier#config#bracket_spacing = 'true'
+au FileType javascript setlocal formatprg=prettier
+au FileType javascript.jsx setlocal formatprg=prettier
+au FileType typescript setlocal formatprg=prettier\ --parser\ typescript
+au FileType html setlocal formatprg=js-beautify\ --type\ html
+au FileType scss setlocal formatprg=prettier\ --parser\ css
+au FileType css setlocal formatprg=prettier\ --parser\ css
