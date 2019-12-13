@@ -21,10 +21,8 @@ fi
 
 PS1='[\u@\h \W]\$ '
 
-# >>>>BEGIN ADDED BY CNCHI INSTALLER<<<< #
 BROWSER=/usr/bin/firefox
 EDITOR=/usr/bin/vim
-# >>>>>END ADDED BY CNCHI INSTALLER<<<<< #
 
 # Start i3
 [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx
@@ -37,15 +35,10 @@ if [ -f ~/.bash_aliases ]; then
   . ~/.bash_aliases
 fi
 
-# Gnome-terminal Solarized Colors
-if [[ $platform == 'linux' ]]; then
-	eval `dircolors ~/.dir_colors/dircolors`
-fi
-
 ## Display git location in bash. Based on https://github.com/jimeh/git-aware-prompt ##
 export GITAWAREPROMPT=~/.dotfiles/git-aware-prompt
-source $GITAWAREPROMPT/main.sh
-export PS1="\u@\h \w \[$txtcyn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrst\] "# Git location
+source "${GITAWAREPROMPT}/main.sh"
+export PS1="\${debian_chroot:+(\$debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\] \[$txtcyn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrst\]\$ "
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
@@ -53,3 +46,8 @@ export PATH="$PATH:$HOME/.rvm/bin"
 PATH="$PATH:$(ruby -e 'print Gem.user_dir')/bin"
 
 export GEM_HOME=$HOME/.gem
+
+export ANDROID_HOME=/home/user_directory/Android/Sdk
+export PATH=${PATH}:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
+#export JAVA_HOME=/usr/lib/jvm/java-8-oracle
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/jre

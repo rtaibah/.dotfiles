@@ -155,6 +155,22 @@ alias cover='mplayer http://ice1.somafm.com/covers-128-mp3'
 
 alias do1="ssh root@107.170.92.118"
 
+# https://protonvpn.com/support/linux-vpn-tool/
+alias vpn="sudo protonvpn-cli"
+# status
+alias vpn-s="sudo protonvpn-cli --status"
+# print ip
+alias vpn-ip="sudo protonvpn-cli --ip"
+# fastest
+alias vpn-f="sudo protonvpn-cli -f"
+# disconnect
+alias vpn-d="sudo protonvpn-cli -d"
+# country
+alias vpn-cc="sudo protonvpn-cli -cc"
+# Reconnect
+alias vpn-r="sudo protonvpn-cli --reconnect"
+
+
 ###############################################################################
 # Tmux 
 ###############################################################################

@@ -9,7 +9,7 @@ set nocompatible              " be iMproved, required
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                               VIM-PLUG									  "
+"                               VIM-PLUG									                    "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 call plug#begin('~/.vim/plugged')
@@ -30,7 +30,7 @@ Plug 'plasticboy/vim-markdown'
 Plug 'altercation/vim-colors-solarized'
 
 " Coding Plugins
-Plug 'Valloric/YouCompleteMe'
+"Plug 'Valloric/YouCompleteMe'
 "Plug 'ternjs/tern_for_vim'
 Plug 'vim-syntastic/syntastic'
 "Plug 'w0rp/ale'
@@ -39,14 +39,14 @@ Plug 'nathanaelkane/vim-indent-guides'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 
-" Javascript-specific Plugins
+"" Javascript-specific Plugins
 Plug 'pangloss/vim-javascript'
 Plug 'leshill/vim-json'
 Plug 'mxw/vim-jsx'
 
 " Python-specific Plugins
-"Plug 'tmhedberg/SimpylFold'
-"Plug 'nvie/vim-flake8'
+Plug 'tmhedberg/SimpylFold'
+Plug 'nvie/vim-flake8'
 
 call plug#end()
 
@@ -55,11 +55,12 @@ call plug#end()
 "                               GENERAL SETTINGS                              "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+" RT this is breaking airline for some reason. Debug.
 " watch .vimrc for changes and reload
-augroup myvimrc
-    au!
-    au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
-augroup END
+"augroup myvimrc
+"    au!
+"    au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
+"augroup END
 
 set dir=~/.vimswap//,/var/tmp//,/tmp//,. " Swap files locaiton
 set encoding=utf-8 " Disable VI compatibility mode.
@@ -292,3 +293,23 @@ let g:prettier#config#bracket_spacing = 'true'
 let g:prettier#autoformat = 0
 let g:prettier#config#jsx_bracket_same_line = 'false'
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue PrettierAsync
+
+" ARABIC/ENGLISH settings
+" Switch to English - mapping
+nnoremap <Leader>e :<C-U>call EngType()<CR>
+" Switch to Arabic - mapping
+nnoremap <Leader>a :<C-U>call AraType()<CR>
+
+" Switch to English - function
+function! EngType()
+" To switch back from Arabic
+  set keymap= " Restore default (US) keyboard layout
+  set norightleft
+endfunction
+
+" Switch to Arabic - function
+function! AraType()
+    set keymap=arabic "Modified keymap. File in ~/.vim/keymap/
+    set rightleft
+endfunction
+
