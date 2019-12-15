@@ -10,6 +10,18 @@ elif [[ "$unamestr" == 'Darwin' ]]; then
    platform='osx'
 fi
 
+export PATH="/usr/local/bin:$PATH"
+export PATH="/usr/local/opt/sqlite/bin:$PATH"
+
+export RTV_BROWSER=lynx
+
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/tools/bin
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+
+
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
@@ -42,11 +54,9 @@ export PS1="\${debian_chroot:+(\$debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]
 
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
-
-PATH="$PATH:$(ruby -e 'print Gem.user_dir')/bin"
-
-export GEM_HOME=$HOME/.gem
+#export PATH="$PATH:$HOME/.rvm/bin"
+# PATH="$PATH:$(ruby -e 'print Gem.user_dir')/bin"
+# export GEM_HOME=$HOME/.gem
 
 export ANDROID_HOME=/home/user_directory/Android/Sdk
 export PATH=${PATH}:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
