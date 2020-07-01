@@ -13,7 +13,9 @@ fi
 export PATH="/usr/local/bin:$PATH"
 export PATH="/usr/local/opt/sqlite/bin:$PATH"
 
+
 export RTV_BROWSER=lynx
+REACT_EDITOR=vim
 
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
@@ -61,4 +63,13 @@ export PS1="\${debian_chroot:+(\$debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]
 export ANDROID_HOME=/home/user_directory/Android/Sdk
 export PATH=${PATH}:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
 #export JAVA_HOME=/usr/lib/jvm/java-8-oracle
-export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/jre
+#export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/jre
+# On mac
+export JAVA_HOME=/Applications/Android\ Studio.app/Contents/jre/jdk/Contents/Home
+
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
+
+# use ripgrep for FZF
+export FZF_DEFAULT_COMMAND='rg --files --follow --hidden'

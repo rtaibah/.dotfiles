@@ -19,29 +19,27 @@ Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-commentary'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-"Plug 'edkolev/tmuxline.vim'
-Plug 'Raimondi/delimitMate' "find something better
 Plug 'kshenoy/vim-signature'
 Plug 'tpope/vim-surround'
 Plug 'easymotion/vim-easymotion'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-"Plug 'plasticboy/vim-markdown'
-Plug 'mhartington/oceanic-next'
-"Plug 'skywind3000/asyncrun.vim'
-
-" Dev Specific Plugins
+Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'christoomey/vim-tmux-navigator'
 Plug 'mattn/emmet-vim'
 Plug 'prettier/vim-prettier'
-Plug 'nathanaelkane/vim-indent-guides'
 Plug 'airblade/vim-gitgutter'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+"Plug 'tsony-tsonev/nerdtree-git-plugin'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+" Needs fonts https://github.com/ryanoasis/nerd-fonts#font-installation
+"Plug 'ryanoasis/vim-devicons'
 Plug 'tpope/vim-fugitive'
 Plug 'sheerun/vim-polyglot'
-"Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'leshill/vim-json'
 Plug 'pangloss/vim-javascript'
 Plug 'othree/yajs.vim'
-Plug 'SirVer/ultisnips'
 
 call plug#end()
 
@@ -49,7 +47,6 @@ call plug#end()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                               GENERAL SETTINGS                              "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 
 set dir=~/.vimswap//,/var/tmp//,/tmp//,. " Swap files location
 set encoding=utf-8 " Disable VI compatibility mode.
@@ -146,15 +143,6 @@ set foldlevelstart=99 "start file with all folds opened
 "                               STYLE                                         "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-"Color scheme
-colorscheme OceanicNext
-
-if has('gui_running')
-  set background=dark
-else
-  set background=dark
-endif
-
 " Gutter color
 highlight clear SignColumn
 
@@ -162,7 +150,8 @@ highlight clear SignColumn
 hi MatchParen cterm=none ctermbg=152 ctermfg=red
 
 " Airline
-let g:airline_theme='oceanicnext'
+" Installed from https://github.com/dracula/vim/tree/master/autoload/airline/themes
+let g:airline_theme='dracula'
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -209,19 +198,78 @@ let g:javascript_conceal_prototype            = "¶"
 let g:javascript_conceal_static               = "•"
 let g:javascript_conceal_super                = "Ω"
 let g:javascript_conceal_arrow_function       = "⇒"
-let g:javascript_conceal_noarg_arrow_function = "🞅"
+let g:javascript_conceal_noarg_arrow_function = "⇒"
 let g:javascript_conceal_underscore_arrow_function = "🞅"
 
-" Coc
-" autocmd FileType json syntax match Comment +\/\/.\+$+
-" set updatetime=300
 
-" Async
-"autocmd BufWritePost *.js AsyncRun -post=checktime ./node_modules/.bin/eslint --fix %
+
+" Coc
+" More settings can be found in ~/.confing/nvim/coc-settings.json
+let g:coc_global_extensions = [
+  \ 'coc-snippets',
+  \ 'coc-pairs',
+  \ 'coc-tsserver',
+  \ 'coc-eslint',
+  \ 'coc-json',
+  \ ]
+
+" To edit snippets :CocCommand snippets.editSnippets
+
+" Make <tab> used for trigger completion, completion confirm, snippet expand and jump
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+let g:coc_snippet_next = '<tab>'
+
+" autocmd FileType json syntax match Comment +\/\/.\+$+
+ set updatetime=300
+
+ " Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+
+" Use K to show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" TODO: Debug as this is not working.
+" Use <c-space> to trigger completion.
+" inoremap <silent><expr> <c-space> coc#refresh()
+
+" Remap for rename current word
+nmap <F3> <Plug>(coc-rename)
+
 
 " NERDTree settings
 map <C-n> :NERDTreeToggle<CR>
 let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
+
+let g:NERDTreeIndicatorMapCustom = {
+    \ "Modified"  : "✹",
+    \ "Staged"    : "✚",
+    \ "Untracked" : "✭",
+    \ "Renamed"   : "➜",
+    \ "Unmerged"  : "═",
+    \ "Deleted"   : "✖",
+    \ "Dirty"     : "✗",
+    \ "Clean"     : "✔︎",
+    \ 'Ignored'   : '☒',
+    \ "Unknown"   : "?"
+    \ }
 
 " Airline settings
 let g:airline_powerline_fonts = 1
@@ -265,8 +313,8 @@ let g:airline_symbols.whitespace = 'Ξ'
 "     \ 'space' : ' '}
 
 " vim-indent-guides
-let g:indent_guides_enable_on_vim_startup = 1
-let g:indent_guides_auto_colors = 1
+" let g:indent_guides_enable_on_vim_startup = 1
+" let g:indent_guides_auto_colors = 1
 
 " FZF
 imap <c-x><c-l> <plug>(fzf-complete-line) "Line completion"

@@ -121,6 +121,7 @@ alias apt-autoremove='sudo apt-get autoremove'
 ###############################################################################
 
 alias v='vim'
+alias vim='nvim'
 alias vinst='vim +PluginInstall +qall'
 
 ###############################################################################
@@ -175,6 +176,5 @@ alias vpn-r="sudo protonvpn-cli --reconnect"
 # Tmux 
 ###############################################################################
 
-alias t-source='tmux source-file ~/.tmux.conf'
+alias 'tsource'='tmux source-file ~/.tmux.conf'
 
-alias ace='acestream-launcher --player vlc'
