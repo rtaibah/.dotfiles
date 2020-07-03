@@ -9,7 +9,9 @@
     ~/.bash_profile: bash_profile
     ~/.bashrc: bashrc
     ~/.config/nvim/init.vim: init.vim
-    ~/.hyper.js: hyper.js
+    ~/.hyper.js:
+      path: hyper.js
+      force: true
     ~/.tmux.conf: tmux.conf
     ~/.tmux: tmux
     ~/.vim: vim
@@ -20,4 +22,4 @@
     - ~/.vim/undo-history
 
 - shell:
-  - [git submodule update --init --recursive, Installing submodules]
+  - [git submodule update --recursive, Installing submodules]
