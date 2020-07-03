@@ -1,0 +1,9 @@
+pane	blog-1	0	:bash	1	:*	0	:/Users/rami/projects/personal/blog-next	0	bash	:
+pane	blog-1	0	:bash	1	:*	1	:/Users/rami/projects/personal/blog-next	1	bash	:
+pane	blog-1	1	:bash	0	:-	0	:/Users/rami/projects/personal/blog-next	1	bash	:
+pane	fun	0	:Python	1	:*	0	:/Users/rami	0	bash	:
+pane	fun	0	:Python	1	:*	1	:/Users/rami	1	Python	:/usr/local/Cellar/python@2/2.7.15_1/Frameworks/Python.framework/Versions/2.7/Resources/Python.app/Contents/MacOS/Python /usr/local/bin/rtv
+window	blog-1	0	1	:*	b9a8,154x85,0,0{80x85,0,0,2,73x85,81,0,8}
+window	blog-1	1	0	:-	c9c2,154x85,0,0,5
+window	fun	0	1	:*	7afe,154x85,0,0{77x85,0,0,0,76x85,78,0,3}
+state	blog-1	fun

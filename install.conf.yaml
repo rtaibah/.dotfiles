@@ -1,0 +1,23 @@
+- defaults:
+    link:
+      relink: true
+
+- clean: ['~']
+
+- link:
+    ~/.bash_aliases: bash_aliases
+    ~/.bash_profile: bash_profile
+    ~/.bashrc: bashrc
+    ~/.config/nvim/init.vim: init.vim
+    ~/.hyper.js: hyper.js
+    ~/.tmux.conf: tmux.conf
+    ~/.tmux: tmux
+    ~/.vim: vim
+    ~/.vimrc: vimrc
+
+- create:
+    - ~/scratch
+    - ~/.vim/undo-history
+
+- shell:
+  - [git submodule update --init --recursive, Installing submodules]

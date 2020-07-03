@@ -124,16 +124,6 @@ alias v='vim'
 alias vim='nvim'
 alias vinst='vim +PluginInstall +qall'
 
-###############################################################################
-# Vagrant
-###############################################################################
-
-alias vup='vagrant up' 
-alias vh='vagrant halt' 
-alias vp='vagrant provision' 
-alias vd='vagrant destroy' 
-alias vs='vagrant ssh' 
-
 #Other
 alias 'make_me_a_sandwich'='echo "What? Make it yourself"'
 alias 'sudo_make_me_a_sandwich'='echo "ok"'
@@ -178,3 +168,12 @@ alias vpn-r="sudo protonvpn-cli --reconnect"
 
 alias 'tsource'='tmux source-file ~/.tmux.conf'
 
+
+
+###############################################################################
+# JS 
+###############################################################################
+
+# Delete all node_modules directories recursively
+
+alias nclean="find . -name 'node_modules' -type d -prune -print -exec rm -rf '{}' \;"

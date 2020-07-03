@@ -1,0 +1,11 @@
+pane	blog-1	0	:blog-posts	0	:	0	:/Users/rami/projects/personal/blog-next/src/pages/blog	1	nvim	:nvim
+pane	blog-1	0	:blog-posts	0	:	1	:/Users/rami/projects/personal/blog-next	0	node	:node /Users/rami/.npm-global/bin/yarn dev
+pane	blog-1	1	:bash	1	:*	0	:/Users/rami/projects/personal/blog-next/public/assets/videos/content/blog	1	bash	:
+pane	blog-1	2	:bash	0	:-	0	:/Users/rami/projects/personal/blog-next	1	bash	:
+pane	fun	0	:Python	1	:*	0	:/Users/rami	0	bash	:
+pane	fun	0	:Python	1	:*	1	:/Users/rami	1	bash	:
+window	blog-1	0	0	:	3f00,209x61,0,0{174x61,0,0,1,34x61,175,0,2}
+window	blog-1	1	1	:*	b720,209x61,0,0,3
+window	blog-1	2	0	:-	b723,209x61,0,0,6
+window	fun	0	1	:*	1123,209x61,0,0{105x61,0,0,4,103x61,106,0,5}
+state	blog-1	fun

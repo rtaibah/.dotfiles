@@ -1,0 +1,24 @@
+pane	4	0	:bash	1	:*	0	:/Users/rami	1	bash	:
+pane	blog-1	0	:blog-posts	0	:	0	:/Users/rami/projects/personal/blog-next/src/pages/blog	1	nvim	:nvim
+pane	blog-1	0	:blog-posts	0	:	1	:/Users/rami/projects/personal/blog-next	0	bash	:
+pane	blog-1	1	:bash	1	:*	0	:/Users/rami/projects/personal/blog-next/public/assets/videos/content/blog	1	bash	:
+pane	blog-1	2	:bash	0	:-	0	:/Users/rami/projects/personal/blog-next	1	bash	:
+pane	closers-3	0	:servers	0	:	0	:/Users/rami/projects/s966/closers/closers-web	0	node	:node /Users/rami/.npm-global/bin/yarn dev
+pane	closers-3	0	:servers	0	:	1	:/Users/rami/projects/s966/closers/closers-web	1	node	:node /Users/rami/.npm-global/bin/yarn storybook
+pane	closers-3	1	:docker-compose	0	:	0	:/Users/rami/projects/s966/closers/closers-api	1	docker-compose	:docker-compose up
+pane	closers-3	2	:vim api	0	:-	0	:/Users/rami/projects/s966/closers/closers-api	1	bash	:
+pane	closers-3	3	:web api	1	:*	0	:/Users/rami/projects/s966/closers/closers-web	1	nvim	:nvim
+pane	fun	0	:Python	1	:*	0	:/Users/rami	0	bash	:
+pane	fun	0	:Python	1	:*	1	:/Users/rami	1	bash	:
+pane	general	0	:bash	1	:*	0	:/Users/rami	1	bash	:
+window	4	0	1	:*	6925,235x68,0,0,16
+window	blog-1	0	0	:	4a3f,235x68,0,0{187x68,0,0,1,47x68,188,0,2}
+window	blog-1	1	1	:*	d1e0,235x68,0,0,3
+window	blog-1	2	0	:-	d1e1,235x68,0,0,4
+window	closers-3	0	0	:	9e34,235x68,0,0{117x68,0,0,8,117x68,118,0,9}
+window	closers-3	1	0	:	6921,235x68,0,0,12
+window	closers-3	2	0	:-	6922,235x68,0,0,13
+window	closers-3	3	1	:*	6923,235x68,0,0,14
+window	fun	0	1	:*	26a0,235x68,0,0{118x68,0,0,5,116x68,119,0,6}
+window	general	0	1	:*	d1dd,235x68,0,0,0
+state	closers-3	blog-1

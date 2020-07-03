@@ -1,0 +1,18 @@
+pane	blog-1	0	:blog-posts	0	:	0	:/Users/rami/projects/personal/blog-next/src/pages/blog	1	nvim	:nvim
+pane	blog-1	0	:blog-posts	0	:	1	:/Users/rami/projects/personal/blog-next	0	bash	:
+pane	blog-1	1	:bash	1	:*	0	:/Users/rami/projects/personal/blog-next/public/assets/videos/content/blog	1	bash	:
+pane	blog-1	2	:bash	0	:-	0	:/Users/rami/projects/personal/blog-next	1	bash	:
+pane	closers-3	0	:nvim	1	:*	0	:/Users/rami/projects/s966/closers/closers-web	0	node	:node /Users/rami/.npm-global/bin/yarn dev
+pane	closers-3	0	:nvim	1	:*	1	:/Users/rami/projects/s966/closers/closers-web	1	nvim	:nvim jsconfig.json
+pane	closers-3	1	:nvim	0	:-	0	:/Users/rami/projects/s966/closers/closers-web	1	nvim	:nvim
+pane	fun	0	:Python	1	:*	0	:/Users/rami	0	bash	:
+pane	fun	0	:Python	1	:*	1	:/Users/rami	1	bash	:
+pane	general	0	:bash	1	:*	0	:/Users/rami	1	bash	:
+window	blog-1	0	0	:	8518,231x62,0,0{185x62,0,0,1,45x62,186,0,2}
+window	blog-1	1	1	:*	b7e0,231x62,0,0,3
+window	blog-1	2	0	:-	b7e1,231x62,0,0,4
+window	closers-3	0	1	:*	bc70,235x70,0,0{117x70,0,0,8,117x70,118,0,9}
+window	closers-3	1	0	:-	5a1f,235x70,0,0,10
+window	fun	0	1	:*	ba7c,231x62,0,0{116x62,0,0,5,114x62,117,0,6}
+window	general	0	1	:*	b7dd,231x62,0,0,0
+state	closers-3	blog-1
