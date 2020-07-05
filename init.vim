@@ -64,6 +64,8 @@ set mouse=a " Enable mouse
 set mousehide " Hide when characters are typed
 set backspace=2 " make backspace work like most other apps"
 
+"let g:python3_host_prog = '/usr/bin/python3'
+
 " Relative line number
 function! NumberToggle()
   if(&relativenumber == 1)

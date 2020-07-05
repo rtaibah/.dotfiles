@@ -1,9 +1,10 @@
+# Make zsh shut up on OSX
+export BASH_SILENCE_DEPRECATION_WARNING=1
+
 # Read bashrc
 if [ -f ~/.bashrc ]; then
     source ~/.bashrc
 fi
-
-test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
 
 export PATH="/usr/local/opt/ruby/bin:$PATH"
 

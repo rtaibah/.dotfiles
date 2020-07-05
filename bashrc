@@ -40,9 +40,7 @@ EDITOR=/usr/bin/vim
 
 # Start i3
 [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx
-
-# Source fzf
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+# Source fzf [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 # Source Aliases
 if [ -f ~/.bash_aliases ]; then
@@ -52,7 +50,7 @@ fi
 ## Display git location in bash. Based on https://github.com/jimeh/git-aware-prompt ##
 export GITAWAREPROMPT=~/.dotfiles/git-aware-prompt
 source "${GITAWAREPROMPT}/main.sh"
-export PS1="\${debian_chroot:+(\$debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\] \[$txtcyn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrst\]\$ "
+export PS1="\${debian_chroot:+(\$debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\] \[$txtcyn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrst\]\\n λ "
 
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.

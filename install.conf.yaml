@@ -4,6 +4,11 @@
 
 - clean: ['~']
 
+- create:
+    - ~/.config/nvim/
+    - ~/scratch
+    - ~/.vim/undo-history
+
 - link:
     ~/.bash_aliases: bash_aliases
     ~/.bash_profile: bash_profile
@@ -13,13 +18,14 @@
       path: hyper.js
       force: true
     ~/.tmux.conf: tmux.conf
-    ~/.tmux: tmux
-    ~/.vim: vim
+    ~/.tmux: 
+      path: tmux
+      force: true
+    ~/.vim: 
+      path: vim
+      force: true
     ~/.vimrc: vimrc
 
-- create:
-    - ~/scratch
-    - ~/.vim/undo-history
 
 - shell:
   - [git submodule update --recursive, Installing submodules]
